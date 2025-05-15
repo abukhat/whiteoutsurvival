@@ -1,0 +1,2558 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مقارنة وحدات المشاة والرماة - Whiteout Survival</title>
+    <style>
+        /* Font Awesome Icons - Minimal embedded version */
+        @font-face {
+            font-family: 'FontAwesome';
+            src: url('data:application/font-woff2;charset=utf-8;base64,d09GMgABAAAAAAOQAA0AAAAAB1AAAANAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGhYbEBwaBmAANBEICqMMpEkLDAABNgIkAyQEIAWDGwc/G5UFyK4GbLuACSfPTxSNJKVbbW1Wn+nM3+tuDl8HImmSIJoJsUgnQoJkQjaJ1P/fT+v9+2ZmLwyqFaLdqX4BdmHn4XRYgNF8GViEMqB58cjfcNd+AqPMqHgEGxsbLQHA2XiEcQYbGJcMQGUjwLgArJAJgMoiyrGO9v8vVf8nIUm3TERMTDQkZIRE8j+HO7QmUjTljtAQVlIMl5RLieWkkZJVRiKDdRnwG+CzuQhLCsH7zz/KyG/UeO2yVAqgZlnWUoBUWmHSHapn5YPsf+oUu3olObVrVV86yB5G/nH24UPLxw/VsKHF9zXqv/wv4j3A0Ddu+X6tW5hkJ6nqcqS++uK3ZpKTB47SIGxNFbFnN0n6nFg2xZiakiRt9RJQRBQATJJoNw6R+b+HBWuLj0XAq8Tgk15xw4n1lbUplZJMm2s9zeyv5BJw56xcSuJr5C5Pf0+KU6SBiC83W/T6PWZ29EzO5f/a7kPkUUSDDQDqA4Ajsf3qxe0W4NrWrLPvuJLg8SclDxTjXMcdcTSATVISYBSmz5oFII7naOkF0OMTQDfmA0Qz9hRg9PIcYNrXWf9XxxjpJv+7iQEAIMI3AH2i1vEVtLc0hzHVVdXzGt4f+LPu59r+BrZifGD/RtFjC4jHlF57cXsUAEVkVtRjl/4FNoJPQAkxAJKkwMBM0SMkMFPSYWB2UQ//r4wSyEZJNCgyQkhj9kCWsx+ynHs07A0pnL+jxGmDLKcLsmwcZoICwIbKKB+IAKf9wDnjBpxPFJyfKHB+AnzGC3De4MJ5iwvnEz6cz0RwfnPg/KHg/KFw4fwR4cJ5IYEqR+8A+p84NTqAtk2MjpqLNm1qbdqpuVDTJtIvgm+ZLJ0FPq1DmwKetbdgH1E7OA0A+jmlSQDgZcsY+QhwaXvQmxAAeLw39QwAlwYTlAGAW/bnxQCZVuKQ8jv6MO/X0YIcQj4MAEDL+7aYzwgRAADi5QIAANZjcfEPAKDlHBMvrXt8v3OqAIDHGQC43rLnuYbFWNsz8DyTN6+a7l8f1D7/ezTnCOx4NpXYEAMZzw9zC5QLkDUxg/sO4HzADRcYHHfg7I7D3Aj4F67uGxwSi/2fmZN/qb9s5tJ6BgLwAAAA') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        .fab, .fas {
+            font-family: 'FontAwesome';
+            font-style: normal;
+        }
+        .fa-youtube:before { content: '\f167'; }
+        .fa-telegram:before { content: '\f2c6'; }
+        .fa-discord:before { content: '\f392'; }
+        .fa-globe:before { content: '\f0ac'; }
+    </style>
+    <script>
+        /* Chart.js - Minimal embedded version */
+        !function(t,e){"object"==typeof exports&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):(t="undefined"!=typeof globalThis?globalThis:t||self).Chart=e()}(this,(function(){"use strict";function t(){return{datasets:[]}}const e=Object.create(null),i=Object.create(null);function s(t,e){if(!e)return t;let i=e.split("."),s=t,n=0;for(;n<i.length&&void 0!==s&&null!==s;++n)s=s[i[n]];return s}function n(t,e,i){for(const s in t)if(s in e){const n=e[s];if("string"==typeof n){if(i[n])throw new Error;i[n]=t[s]}else r(t[s],n,i)}}function r(t,e,i,s=""){s&&(s+=".");for(const r in t)if(r in e){const a=s+r;if(a in i)throw new Error(`The id "${a}" is in use.`);i[a]=t[r],n(t[r],e[r],i,a)}}function a(t,e,i,s=""){s&&(s+=".");for(const n in t)o(t[n],s+n,e,i)}function o(t,e,i,s){if(s){s[e]=t;return}if(e in i)throw new Error(`The id "${e}" is already registered in the core namespace.`);i[e]=t}function l(t){return void 0!==t.id||(t.id=function(){let t=0;return()=>""+t++}()()),t.id}function h(t,n){return function(r=""){let a=n.get(r);return a||(a=t(),n.set(r,a)),a}}function c(t){const n={},r={},a=h(t,e);return{register:o=>{const[c,u]=function(t){if(!t)throw new Error("item must have a name");return[t,t.split(".")]}(o.id);let d=c;if(u.length>1){const t=u[u.length-1];d=function(t,e){if(t===""+parseInt(t,10))return t;const[i,s]=e.split(".");i===t&&(t=s);return t}(t,c)}try{!function(t,e){for(let i=0;i<e.length;i++)if("_"===e[i]||0===i&&Number.isFinite(+e[i]))throw new Error(`Invalid character in id: ${e}`)}(0,d),s(n,c)||r===c||i[c]||l(o),a(c)&&a("".concat(c,".js")),o.defaults={_scriptable:!0,_indexable:!0},function(t,i,s={}){t.forEach((t=>{const n=t.id,r=l(t);if(!i)return;o(t,n,i,s);const h="".concat(n,".js");a(h)&&(s[r]=t)}))}([o],n,r),function(t,e,i){t.forEach((t=>{t.register(e,i)}))}([o],n,r)}catch(t){throw t}return o},get:t=>s(n,t)||s(i,t)||s(r,t),getAny:t=>s(n,t)||s(i,t)||s(r,t)||t,unregister:t=>{!function(t,i){const s=i.get("".concat(t,".js"));e.delete(t),e.delete("".concat(t,".js")),s&&s.unregister&&s.unregister()}(t,e)}}}class u{constructor(t={}){this.options=t,this.animations=[]}update(t,s){let n=s.options;const r=function(t,e){return Object.keys(e).filter((e=>!t.hasOwnProperty(e)))}(t,n).length>0;r&&(this.animations=[])}getAnimations(){return this.animations.sort(((t,e)=>t.start-e.start))}}function d(t,e){const i=t&&t.options||{},s=i.reverse,n=void 0===i.min?e:0,r=void 0===i.max?e:0;return{start:s?r:n,end:s?n:r}}function f(t,e,i,s){const n=s.canBeZero;return void 0!==s.from&&void 0!==s.to?{from:s.from,to:s.to}:void 0!==s.count?function(t,e,i,s){let n=e.data.datasets[s.datasetIndex].data,r=0;if(void 0===t||""===t)return{count:n.length,start:0,end:n.length};for(let a=0,o=n.length;a<o;++a)n[a]===t&&(r=a);return{start:r,end:r+i}}(t,e,i,s):{start:0,end:i}}var g={linear:function(t){return t},easeInQuad:function(t){return t*t},easeOutQuad:function(t){return-t*(t-2)},easeInOutQuad:function(t){return(t/=.5)<1?.5*t*t:-.5*(--t*(t-2)-1)},easeInCubic:function(t){return t*t*t},easeOutCubic:function(t){return(t-=1)*t*t+1},easeInOutCubic:function(t){return(t/=.5)<1?.5*t*t*t:.5*((t-=2)*t*t+2)},easeInQuart:function(t){return t*t*t*t},easeOutQuart:function(t){return-((t-=1)*t*t*t-1)},easeInOutQuart:function(t){return(t/=.5)<1?.5*t*t*t*t:-.5*((t-=2)*t*t*t-2)},easeInQuint:function(t){return t*t*t*t*t},easeOutQuint:function(t){return(t-=1)*t*t*t*t+1},easeInOutQuint:function(t){return(t/=.5)<1?.5*t*t*t*t*t:.5*((t-=2)*t*t*t*t+2)},easeInSine:function(t){return 1-Math.cos(t*Math.PI/2)},easeOutSine:function(t){return Math.sin(t*Math.PI/2)},easeInOutSine:function(t){return-.5*(Math.cos(Math.PI*t)-1)},easeInExpo:function(t){return 0===t?0:Math.pow(2,10*(t-1))},easeOutExpo:function(t){return 1===t?1:1-Math.pow(2,-10*t)},easeInOutExpo:function(t){return 0===t?0:1===t?1:(t/=.5)<1?.5*Math.pow(2,10*(t-1)):.5*(2-Math.pow(2,-10*--t))},easeInCirc:function(t){return t>=1?t:-(Math.sqrt(1-t*t)-1)},easeOutCirc:function(t){return Math.sqrt(1-(t-=1)*t)},easeInOutCirc:function(t){return(t/=.5)<1?-.5*(Math.sqrt(1-t*t)-1):.5*(Math.sqrt(1-(t-=2)*t)+1)},easeInElastic:function(t){return 0===t?0:1===t?1:-Math.pow(2,10*(t-1))*Math.sin((t-1.1)*5*Math.PI)},easeOutElastic:function(t){return 0===t?0:1===t?1:Math.pow(2,-10*t)*Math.sin((t-.1)*5*Math.PI)+1},easeInOutElastic:function(t){return 0===t?0:1===t?1:(t/=.5)<1?-.5*Math.pow(2,10*(t-1))*Math.sin((t-1.1)*5*Math.PI):.5*Math.pow(2,-10*(t-1))*Math.sin((t-1.1)*5*Math.PI)+1},easeInBack:function(t){return t*t*((1.70158+1)*t-1.70158)},easeOutBack:function(t){return(t-=1)*t*((1.70158+1)*t+1.70158)+1},easeInOutBack:function(t){let e=1.70158;return(t/=.5)<1?t*t*((1+(e*=1.525))*t-e)*.5:(t-=2)*t*((1+(e*=1.525))*t+e)*.5+1},easeInBounce:function(t){return 1-g.easeOutBounce(1-t)},easeOutBounce:function(t){return t<1/2.75?7.5625*t*t:t<2/2.75?7.5625*(t-=1.5/2.75)*t+.75:t<2.5/2.75?7.5625*(t-=2.25/2.75)*t+.9375:7.5625*(t-=2.625/2.75)*t+.984375},easeInOutBounce:function(t){return t<.5?.5*g.easeInBounce(2*t):.5*g.easeOutBounce(2*t-1)+.5}};class p{constructor(){this._request=null,this._charts=new Map,this._running=!1,this._lastDate=void 0}_notify(t,e,i,s){const n=e.listeners[s],r=e.duration;n.forEach((s=>s({chart:t,initial:e.initial,numSteps:r,currentStep:Math.min(i-e.start,r)})))}_refresh(){this._request||(this._running=!0,this._request=g.requestAnimFrame.call(window,(()=>{this._update(),this._request=null,this._running&&this._refresh()})))}_update(t=Date.now()){let e=0;this._charts.forEach(((i,s)=>{if(!i.running||!i.items.length)return;const n=i.items;let r,a=n.length-1,o=!1;for(;a>=0;--a)r=n[a],r._active?(r._total>i.duration&&(i.duration=r._total),r.tick(t),o=!0):(n[a]=n[n.length-1],n.pop());o&&(s.draw(),this._notify(s,i,t,"progress")),n.length||(i.running=!1,this._notify(s,i,t,"complete"),i.initial=!1),e+=n.length})),this._lastDate=t,0===e&&(this._running=!1)}_getAnims(t){const e=this._charts;let i=e.get(t);return i||(i={running:!1,initial:!0,items:[],listeners:{complete:[],progress:[]}},e.set(t,i)),i}listen(t,e,i){this._getAnims(t).listeners[e].push(i)}add(t,e){if(!e||!e.length)return;const i=this._getAnims(t);e.forEach((t=>{t.chart=t.chart||t.options.chart||t.parent.chart||t.ctx.chart,t.options.chart=t.chart,t._completed=!1;const e=t.options;e.tween=g.effects&&g.effects[e.easing]?g.effects[e.easing]:g[e.easing],t._easing=e.tween||g.linear,t._start=Date.now(),t._duration=e.duration,t._total=t._duration,t._loop=!!e.loop,t._target=t.parent,t.construct&&t.construct()})),i.items.push(...e),this._request||this._refresh()}has(t){return this._getAnims(t).items.length>0}start(t){const e=this._getAnims(t);e.running=!0,e.start=Date.now(),e.duration=e.items.reduce(((t,e)=>Math.max(t,e._duration)),0),this._refresh()}running(t){if(!this._running)return!1;const e=this._getAnims(t);return!(!e||!e.running||!e.items.length)}stop(t){const e=this._getAnims(t);if(!e||!e.items.length)return;const i=e.items;let s=i.length-1;for(;s>=0;--s)i[s].cancel();e.items=[],this._notify(t,e,Date.now(),"complete")}remove(t){return this._getAnims(t).items=[]}}var m=new p;function b(t,e,i){const{startAngle:s,pixelMargin:n,x:r,y:a,outerRadius:o,innerRadius:l}=e;let h=n/o;t.beginPath(),t.arc(r,a,o,s-h,i+h),l>n?(h=n/l,t.arc(r,a,l,i+h,s-h,!0)):t.arc(r,a,n,i+Math.PI/2,s-Math.PI/2),t.closePath(),t.clip()}function x(t,e,i,s,n,r){let{x:a,y:o,startAngle:l,pixelMargin:h,innerRadius:c}=e,u=Math.max(e.outerRadius+s+i-h,0),d=c>0?c+s+i+h:0,f=0,g=n-l;if(s){const t=((c>0?c-s:0)+(u>0?u-s:0))/2;f=(g-(0!==t?g*t/(t+s):g))/2}const p=g-Math.max(.001,g*u-i/Math.PI)/u,m=(g-Math.max(.001,g*d-i/Math.PI)/d)/2;let b=Math.max(0,l+f+m),x=Math.min(n,l+g-f-m);return(p=Math.max(0,l+f+p),Math.abs(x-b)<.01)&&(x=b,b=Math.max(0,x-2*Math.PI)),{outerStart:b,outerEnd:x,innerStart:Math.max(0,b-p),innerEnd:Math.min(n,x+p)}}function v(t,e,i,s){let n=e.backgroundColor,r=e.borderColor,a=e.borderWidth;if(!n&&(!r||!a))return;t.save();const o=Math.max(a,0),l=e.outerRadius-o/2,h=e.innerRadius+o/2;t.beginPath(),b(t,{x:e.x,y:e.y,startAngle:i.outerStart,endAngle:i.outerEnd,outerRadius:l,innerRadius:h,pixelMargin:o/2}),t.closePath(),t.clip();const c=x(t,e,i,o/2,i.outerStart,i.outerEnd);if(t.translate(e.x,e.y),t.fillStyle=n,b(t,{x:0,y:0,startAngle:c.innerStart,endAngle:c.innerEnd,outerRadius:l,innerRadius:h,pixelMargin:o/2}),t.fill("evenodd"),r&&a>0){t.lineWidth=a,t.strokeStyle=r;const e=Math.max(l,h),i=Math.min(l,h);e>0&&t.stroke(),i>0&&(t.translate(0,0),t.beginPath(),t.arc(0,0,i,c.innerEnd,c.innerStart,!0),t.stroke())}t.restore()}function _(t,e,i=e){t.save(),t.beginPath(),t.fillStyle=e.backgroundColor,t.strokeStyle=e.borderColor,t.lineWidth=e.borderWidth,t.setLineDash(e.borderDash||[]),t.lineDashOffset=e.borderDashOffset,t.lineJoin=e.borderJoinStyle,t.beginPath();const s=i.outerStart||e.startAngle,n=i.outerEnd!==e.endAngle;t.arc(e.x,e.y,e.outerRadius,s,i.outerEnd||e.endAngle,n),i.innerEnd&&e.innerRadius>0&&(t.arc(e.x,e.y,e.innerRadius,i.innerEnd,i.innerStart,!n),t.closePath());let r=i.innerStart;r&&e.innerRadius>0&&(t.beginPath(),t.arc(e.x,e.y,e.innerRadius,r,s,!0),r!==s&&e.outerRadius>0&&t.arc(e.x,e.y,e.outerRadius,s,s,!1),t.closePath()),t.fill(),"inner"===e.borderAlign?b(t,{...e,startAngle:i.innerStart||e.startAngle,endAngle:i.innerEnd||e.endAngle,pixelMargin:0,outerRadius:e.innerRadius,innerRadius:e.innerRadius-e.borderWidth/2}):e.borderWidth>0&&t.stroke(),t.restore()}function y(t,e){let i=null;return{key(s){return i=s,this},has(){return i in t},get(){return s(t,i,e)},put(s){t[i]=s,this},done(){this.clear(),e=null},clear(){i in t&&delete t[i],i=null}}}class M{_notify(t,e,i,s){const n="function"==typeof s?s:s[e];if(n){const s=t.getContext(i);s.chart=t,n({chart:t,event:s})}}static create(){return this._instance||(this._instance=new this),this._instance}_createDescriptor(t,e){return{type:t,options:e.options,scopeKey:e.scopeKey,key:e.key||t}}register(t,e){const i=t+"Descriptors";e&&this[i]&&this[i].set(e.id,e)}unregister(t,e){const i=t+"Descriptors";e&&i in this&&this[i].delete(e.id)}addEventListener(t,e,i){this._eventTargets||(this._eventTargets=new Map),this._eventTargets.has(t)||this._eventTargets.set(t,{listeners:{},bonds:{}});const n=this._eventTargets.get(t);this._addListener(n,e,i)}hasEventListener(t,e){if(!this._eventTargets)return!1;if(!this._eventTargets.has(t))return!1;const i=this._eventTargets.get(t);return!!(i&&i.listeners[e]&&i.listeners[e].length)}removeEventListener(t,e,i){if(!this._eventTargets)return this;if(!this._eventTargets.has(t))return this;const n=this._eventTargets.get(t);if(!n.listeners[e])return this;const r=n.listeners[e],a=i?r.indexOf(i):-1;return-1!==a&&r.splice(a,1),this}_addListener(t,e,i){const s=t.listeners;s[e]||(s[e]=[]),s[e].push(i)}_dispatchEvent(t,e,i){if(!this._eventTargets)return this;if(!this._eventTargets.has(t))return this;const n=this._eventTargets.get(t),r=n.listeners,a=n.bonds;for(const t in r)if(!e[t]&&!a[t])continue;for(const t in r){if(e[t])continue;const s=r[t];s&&s.length&&s.forEach((s=>{this._notify(i,t,{type:t},s)}))}for(const t in a){if(e[t])continue;const s=a[t];s&&s.length&&s.forEach((s=>s._dispatchEvent(s.target,e,i)))}return this}bindEvents(t,e,i){if(!this._eventTargets||!this._eventTargets.has(t))return this;if(!this._eventTargets.has(e))return this;const s=this._eventTargets.get(t).bonds,n=this._eventTargets.get(e);return s[i]||(s[i]=[]),n&&s[i].push(n),this}unbindEvents(t,e,i){if(!this._eventTargets||!this._eventTargets.has(t))return this;if(!this._eventTargets.has(e))return this;const s=this._eventTargets.get(t).bonds;if(!s[i])return this;const n=s[i].indexOf(this._eventTargets.get(e));return-1!==n&&s[i].splice(n,1),this}}const w=["push","pop","shift","splice","unshift"];function k(t,e){t._chartjs?t._chartjs.listeners.push(e):(Object.defineProperty(t,"_chartjs",{configurable:!0,enumerable:!1,value:{listeners:[e]}}),w.forEach((e=>{const i="_onData"+e.charAt(0).toUpperCase()+e.slice(1),s=t[e];Object.defineProperty(t,e,{configurable:!0,enumerable:!1,value(...e){const n=s.apply(this,e);return t._chartjs.listeners.forEach((t=>{if("function"==typeof t[i])t[i](...e)})),n}})})))}function S(t,e){const i=t._chartjs;if(!i)return;const s=i.listeners,n=s.indexOf(e);-1!==n&&s.splice(n,1),s.length>0||(w.forEach((e=>{delete t[e]})),delete t._chartjs)}function P(t){const e=new Set;let i,s;for(i=0,s=t.length;i<s;++i)e.add(t[i]);return e.size===s?t:Array.from(e)}const D="$chartjs",C="$datalabels";class O{constructor(){this._init=[],this._init.allIds=[],this._update=[],this._update.allIds=[],this._interact=[],this._interact.allIds=[],this._afterDatasetUpdate=[],this._afterDatasetUpdate.allIds=[],this._afterDatasetsUpdate=[],this._afterDatasetsUpdate.allIds=[]}_getAnno(t){let e;t.annotation?e=t.annotation:t.annotationBox&&(e=t.annotationBox);const i=e&&e.annotations?e.annotations:[];return i.length?i:[]}add(t,e,i){const s=this._getAnno(t.chartInstance.config);this._pushPlugin(s,t,this[e],e,this[e].allIds,i)}remove(t,e,i){const s=this._getAnno(t.chartInstance.config);this._removePlugin(s,t,this[e],e,this[e].allIds,i)}_pushPlugin(t,e,i,s,n,r){const a=t.map((t=>t.id)).filter((t=>t));if(a&&a.length){const t=a.filter((t=>-1===n.indexOf(t)));n.push(...t);for(const t of r)if(i.findIndex((i=>i.plugin===e&&i.hook===t.hook))<0){const s={plugin:e,hook:t.hook};t.match&&(s.match=t.match),i.push(s)}}}createEventContext(t,e,i){return{chart:t.chartInstance.getContext(),element:e||t.chartInstance,id:e?e.id:void 0,state:t.chartInstance.state?t.chartInstance.state.getState():void 0,eventContext:i}}run(t,e,i,s,n,r){for(const a of this[e]){const e=n&&s&&s.id||"",o=n&&s&&s.id&&a.match?a.match.test(e):!0,l=r&&a.hook!==r;if(n&&s&&!o||l)continue;const h=a.plugin.getContext(t,i),c=this.createEventContext(a.plugin,s,i);a.plugin._notify(h,a.hook,c,n)}}_removePlugin(t,e,i,s,n,r){const a=t.map((t=>t.id)).filter((t=>t)),o=a.findIndex((t=>t===e.id));if(o>=0&&(a.splice(o,1),n.splice(n.indexOf(e.id),1)),i.length)for(const t of r){const s=i.findIndex((i=>i.plugin===e&&i.hook===t.hook));-1!==s&&i.splice(s,1)}}_addHook(t,e,i,s,n,r){if(!s._chartjs){s._chartjs=!0;const i=n?s:{id:s,annotations:[]};if(i.id===s&&e._addToIndexes(i.id),i.id)return t.splice(r,0,i),i}else if(s!==e.id){const t=e._addToIndexes(s);if(t&&i)return t}return s}_add(t,e,i,s){if("string"==typeof i)return this._addHook(t,e,!1,i,!1,s);if("object"==typeof i&&i){const n=i.id||"";return"string"==typeof n&&n.length?this._addHook(t,e,!0,i,!0,s):i}}static enableEventListeners(t){t._annotationEvents||(t._annotationEvents=new O)}}M._instance=void 0;const A="$chartjs",T=(t,e={})=>({key:A,setIndexes(e,i){if(!e||!e.id||-1!==i.indexOf(e.id))return;i.push(e.id)},getKey(t,e,i){return i?[t,e,i].join("."):[t,e].join(".")},getScope(t,e,i){return t?i?`${t.id}.${e}.${i}`:`${t.id}.${e}`:i?`${e}.${i}`:e},isIndexable:t=>!(t&&t.options&&!1===t.options.indexable),isDirectUpdateMode(t){return!(!t||!t.updatemodes)&&-1!==t.updatemodes.indexOf("direct")},_addToIndexes(t){return-1===this.instances.ids.indexOf(t)&&(this.instances.ids.push(t),!0)},_getIndexType(t,e){const i=s(e,"scales.".concat(t,".type"));return i&&"category"===i.toLowerCase()?"category":"linear"},_getIndex(t,e){const i=s(e,"scales.".concat(t,".id"))||t;return s(e,"scales.".concat(i,".ticks"))},_getHighestIndex(t,e,i=0){if("category"!==e){for(const e of t)i=Math.max(i,e);return i}return Math.max(0,t.length-1)},_getLongestSize(t,e,i){let s=0;for(let n=0;n<t.length;n++)if("object"==typeof t[n]){const r=this._getLabelSize(t[n])?this._getLabelSize(t[n]):i;r>s&&(s=r)}return"category"===e?"percent":s},_getLabelSize:t=>t?"object"==typeof t?(t.label||t.value||"").toString().length:t.toString().length:0,getIndexes(t,e){const i=s(t,"scales.".concat(e,".id"))||e;return s(t,"scales.".concat(i,".labels"))||s(t,"scales.".concat(i,".ticks"))||[]},_avgTextSize(t,e){if(!t||!t.children)return 0;const i=Array.from(t.children);if(!i||!i.length)return 0;let s,n=[],r="";switch(e){case"left":case"right":r="height";break;case"top":case"bottom":r="width";break;default:r="width"}if("width"===r)for(const e of i)if(e.style&&e.style.width){const i=e.style.width.replace(/px|em|rem/,"");e.id!==i&&n.push(parseInt(i,10))}else e.id!==e.innerHTML&&n.push(e.innerHTML.length);else for(const e of i)e.clientHeight&&n.push(e.clientHeight);for(s of n)if(s>0)return s;return 0},lookupByKey(e,i,n=!1){const r=this.getScope(e,i,n),a=t[r];return a},decorate(t,i,s){if(!t)return null;if("scale"===i){if(!s){const e=t.chartInstance.scales;return s=Object.keys(e).length?e[Object.keys(e)[0]]:{}}if("function"==typeof s._dynamic&&!s._userGenerated&&(s=s._dynamic(t.chartInstance.getContext())),s&&s.options&&!1===s.options.display)return null}if("dataset"===i&&s&&t.chartInstance.data&&t.chartInstance.data.datasets){const e=t.chartInstance.getChartDataset(s);return e||null}return s||null},addResizeListener(t,e){t&&t.addEventListener&&t.addEventListener("resize",e)},removeResizeListener(t,e){t&&t.removeEventListener&&t.removeEventListener("resize",e)},instances:{ids:[],...e}}),I=[];class L{constructor(t,e){this._chartjs=void 0,this.chartInstance=void 0,this._eventDispatcher=void 0,this._elements=void 0,this._tooltipItems=void 0,this._drawState=void 0,void 0===t||void 0===t._chartjs||t._chartjs.listeners.includes(this)?this.construct(t,e):L.instances.push(this),O.enableEventListeners(this),this._initialize(t,e)}static _addPlugin(t,e){const i=L.instances.filter((e=>e.chartInstance===t));e=e||{};for(const t of i)e.id=t.id,t._createOutline(e)}static get instances(){return I}isOwnInstance(t){return t?t._chartjs&&!!t._chartjs.listeners.find((t=>t.constructor===this.constructor)):!1}async construct(t,e){void 0!==e&&(this._validateOptions(e),e.id=e.id||this.constructor.id||void 0),void 0!==e&&(this.options=e),void 0!==t&&k(t,this),this.chartInstance=t,this._drawState={visibleElements:new Map,requesting:!1,requested:{},dragging:!1,dragStart:null},this._eventDispatcher=new M,this._elements=new Map,this._tooltipItems=[],await this._refresh()}setOptions(t){void 0!==t&&(this._validateOptions(t),this.options=t)}get id(){return this.options&&this.options.id}getContext(t,e){return{chart:t,initial:e,replay:t.replay,cancelAction:!1}}beforeInit(){}afterInit(){}beforeUpdate(t,e,i){}configure(t,e,i){}afterUpdate(t,e,i){}beforeRender(t,e,i){return!1}beforeDraw(t,e,i){return!1}afterDraw(t,e,i){return!1}beforeDatasetsDraw(t,e,i){return!1}afterDatasetsDraw(t,e,i){return!1}beforeDatasetDraw(t,e,i){return!1}afterDatasetDraw(t,e,i){return!1}beforeEvent(t,e,i){return!1}afterEvent(t,e,i){}_notify(t,e,i,s){try{const t={type:e,cancelAction:!1};i&&(t.event=i.event||i.eventContext||{type:e},t.element=i.element,t.state=i.state,t.eventContext=i.eventContext);for(const i of this.constructor._allEvents)if(i===e&&"function"==typeof this[i]){const e=this[i](t);if(e instanceof Promise){this._notifyAsync(e).catch((t=>{console.error("Error caught by async handler:",t)}))}else if(!1===e)t.cancelAction=!0;else if(void 0!==e&&t.cancelAction&&!1===e)t.cancelAction=!1}if(s&&(s.cancelAction=t.cancelAction),t.cancelAction)return!0}catch(t){console.error("Error caught by handler:",t)}return!1}async _notifyAsync(t){return await t}destroy(){this._listeners&&(this.chartInstance.canvas.removeEventListener("click",this._listeners.onClick),this.chartInstance.canvas.removeEventListener("mousemove",this._listeners.onHover)),this.chartInstance._chartjs&&S(this.chartInstance,this),this.chartInstance=void 0,L.instances.splice(L.instances.indexOf(this),1)}hook(t,e,i){}static lookupByKey(t,e,i=!1){return this.key.lookupByKey(t,e,i)}_initialize(t,e){if(this._validatePlugin(t,e),void 0!==e&&Object.freeze(e),this._addToChartconfig(t,e),t){const e=this._initializeListeners(t);this._listeners=e}return this}_refresh(){}static get _allEvents(){return Object.getOwnPropertyNames(this.prototype).filter((t=>"function"==typeof this.prototype[t])).filter((t=>"_"!==t.charAt(0)&&"constructor"!==t))}_validateOptions(t){}_validatePlugin(t,e){}_addToChartconfig(t,e){t&&t.config&&t.config.plugins&&t.config.plugins.push(this)}_initializeListeners(t){const e={onClick:e=>this._dispatchEvent(e,"click"),onHover:e=>this._dispatchEvent(e,"mousemove")};return t.canvas.addEventListener("click",e.onClick),t.canvas.addEventListener("mousemove",e.onHover),e}_dispatchEvent(t){if(this.chartInstance.replay)return null;t.chart=this.chartInstance;const e=this.chartInstance.getElementsAtEventForMode(t,this.options.mode||"nearest",this.options,!1);return this.chartInstance._eventDispatcher&&(this.chartInstance._eventDispatcher._dispatchEvent(this.chartInstance,{click:!0},this.chartInstance),this.chartInstance._eventDispatcher._dispatchEvent(this.chartInstance,{mousemove:!0},this.chartInstance)),this._eventDispatcher._dispatchEvent(this.chartInstance,{click:!0},this.chartInstance),this._eventDispatcher._dispatchEvent(this.chartInstance,{mousemove:!0},this.chartInstance),e&&e.length>0?e[0]:null}_dispatchElementEvent(t,e,i){if(this.chartInstance.replay)return;const s="click"===i?this._listeners.onClick:this._listeners.onHover;s&&s({type:i,target:t})}get key(){return T(e,{plugin:this})}}function E(t,e,i){let s=t.getSortedVisibleDatasetMetas()[i.datasetIndex],n=s.data[i.index];return!n._model&&n._view&&(n._model=n._view),s&&n}L.instances=I,L.key=T(e);class R{constructor(){this.metas=[],this.scales={},this.attached=!1,this.drawing=!1,this.scale=null}contains(t){return this.metas.find((e=>e.id===t))?(e=>function(t,e,i){t.metasets=t.metasets||[];const s=t.metasets;for(let n=0;n<s.length;n++)if(s[n].id===e)return s[n];if(s.length<i){const n={id:e,id$resolve:i,parent:t,parentId:void 0};s.push(n);const r=t.parentId?t.parentId+".datasets."+e:e;return n.parentId=r,n}return null}(e,t))(null):null}createScale(t,e,i,s,n){}addCustomScale(t,e,i){}prepare(t,e){}saveState(t){}}L.prototype.defaults={key:"annotation",elements:{},labels:{},listeners:{},synchronize:!1,mode:"point",animations:{numbers:{properties:["x1","x2","y1","y2","x","y","xMin","xMax","yMin","yMax","width","height","surprise"],type:"number"}},initMode:{point:!0},draw:!0};const z={id:"DjsaxsLkiLnwqtx",adb:"zcLhjlazpabrgqk",key:"rqmcblkqqytsvlo"};let F=0,j=0;function B(t,e,i){if(!t)return{top:0,right:0,bottom:0,left:0};"string"==typeof t&&(t={top:t,right:t,bottom:t,left:t}),"number"==typeof t&&(t={top:t,right:t,bottom:t,left:t});const{top:s=0,right:n=0,bottom:r=0,left:a=0}=t;return{top:s,right:e?i-n:n,bottom:r,left:a}}function N(t,e,i){const s=v(t,e,i);return s.outerStart=i.outerStart,s.outerEnd=i.outerEnd,s.innerStart=i.innerStart,s.innerEnd=i.innerEnd,s}function W(t,e,i){t.save(),t.lineWidth=e.borderWidth,t.fillStyle=e.backgroundColor,t.setLineDash(e.borderDash||[]),t.lineDashOffset=e.borderDashOffset,t.strokeStyle=e.borderColor,t.beginPath(),i(),t.fill(),e.borderWidth&&t.stroke(),t.restore()}return function(t){let e=new c(t);return{register(...t){e.register(...t)},unregister(...t){e.unregister(...t)},get(t){return e.get(t)}}}()}));
+    </script>
+    <!-- Meta tags for SEO and social sharing -->
+    <meta name="description" content="أداة مقارنة تفاعلية لوحدات مشاة ورماة هيليوس والمهيمنين في لعبة Whiteout Survival">
+    <meta name="keywords" content="Whiteout Survival, مشاة هيليوس, المشاة المهيمنين, رماة هيليوس, الرماة المهيمنين, مقارنة وحدات">
+    <meta name="author" content="Whiteout Survival">
+    <style>
+/***** BUNDLED CSS *****/
+:root {
+    --primary-blue: #4a7dc7;
+    --dark-blue: #2d5ca3;
+    --light-blue: #cfddf0;
+    --very-light-blue: #e6edf7;
+    --helios-red: #cb3535;
+    --helios-dark-red: #a12929;
+    --dominators-purple: #8c3689;
+    --dominators-dark-purple: #6b286a;
+    --dominators-yellow: #ffc107;
+    --dominators-dark-yellow: #ff8f00;
+    --border-color: #d5d5e0;
+    --background-color: #f5f7fa;
+    --text-color: #333;
+    --text-light: #666;
+    --white: #fff;
+    --level-1-bg: #e57373;
+    --level-5-bg: #64b5f6;
+    --level-10-bg: #9c27b0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    direction: rtl;
+    text-align: right;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    padding-bottom: 100px;
+}
+
+.banner {
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.banner img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    margin-bottom: 0.5em;
+    font-weight: 600;
+}
+
+h1 {
+    color: var(--dark-blue);
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 0.8em;
+}
+
+h2 {
+    color: var(--dark-blue);
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--light-blue);
+    padding-bottom: 0.5em;
+    margin-top: 1.5em;
+}
+
+h3 {
+    color: var(--text-color);
+    font-size: 1.2rem;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2em;
+    background-color: var(--very-light-blue);
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-text {
+    flex: 2;
+}
+
+.icon-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.unit-icon {
+    width: 80px;
+    height: 80px;
+}
+
+header p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+.unit-tables {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 2em;
+}
+
+.unit-table {
+    flex: 1;
+    min-width: 300px;
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+}
+
+th, td {
+    padding: 0.75em;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background-color: var(--light-blue);
+    color: var(--dark-blue);
+    font-weight: 600;
+}
+
+th img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+tbody tr:nth-child(even) {
+    background-color: var(--very-light-blue);
+}
+
+tbody tr:hover {
+    background-color: var(--light-blue);
+}
+
+.level-1 { background-color: var(--level-1-bg); color: white; }
+.level-5 { background-color: var(--level-5-bg); color: white; }
+.level-10 { background-color: var(--level-10-bg); color: white; }
+
+.comparison-section, .power-chart-section, .battle-calculator, .equivalent-level-section {
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 1.5em;
+    margin-bottom: 2em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.comparison-inputs, .battle-inputs, .equivalent-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 1.5em;
+}
+
+.unit-selection, .battle-unit, .equivalent-unit {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    flex: 1;
+}
+
+.unit-select {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+label {
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+select, input {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: var(--white);
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn.primary {
+    background-color: var(--primary-blue);
+    color: var(--white);
+}
+
+.btn.primary:hover {
+    background-color: var(--dark-blue);
+}
+
+.comparison-result, .battle-result {
+    background-color: var(--very-light-blue);
+    border-radius: 8px;
+    padding: 1.5em;
+    margin-top: 1.5em;
+}
+
+.comparison-table {
+    width: 100%;
+    margin-bottom: 1.5em;
+}
+
+.winner-container {
+    text-align: center;
+    padding: 1em;
+    border-radius: 8px;
+    margin-top: 1.5em;
+}
+
+.winner-helios {
+    background-color: rgba(203, 53, 53, 0.1);
+    border: 2px solid var(--helios-red);
+}
+
+.winner-dominators {
+    background-color: rgba(140, 54, 137, 0.1);
+    border: 2px solid var(--dominators-purple);
+}
+
+.winner-tie {
+    background-color: rgba(74, 125, 199, 0.1);
+    border: 2px solid var(--primary-blue);
+}
+
+.stat-better {
+    color: green;
+    font-weight: bold;
+}
+
+.stat-worse {
+    color: red;
+}
+
+.stat-equal {
+    color: var(--text-light);
+}
+
+.chart-container, .battle-chart-container, .equivalent-chart-container {
+    width: 100%;
+    height: 400px;
+    margin: 1.5em 0;
+}
+
+.chart-explanation, #battle-explanation {
+    background-color: var(--very-light-blue);
+    padding: 1em;
+    border-radius: 8px;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+#battle-winner {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 1em 0;
+    padding: 0.8em;
+    border-radius: 8px;
+}
+
+.helios-winner {
+    background-color: rgba(203, 53, 53, 0.2);
+    color: var(--helios-dark-red);
+}
+
+.dominators-winner {
+    background-color: rgba(140, 54, 137, 0.2);
+    color: var(--dominators-dark-purple);
+}
+
+.equivalent-result {
+    background-color: var(--very-light-blue);
+    border-radius: 8px;
+    padding: 1.5em;
+    margin-top: 1.5em;
+    display: none;
+}
+
+.equivalent-message {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 1em 0;
+    padding: 0.8em;
+    border-radius: 8px;
+}
+
+#equivalent-message {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 1em 0;
+    padding: 0.8em;
+    border-radius: 8px;
+    background-color: var(--very-light-blue);
+}
+
+.helios-equivalent {
+    background-color: rgba(203, 53, 53, 0.1);
+    border-left: 4px solid var(--helios-red);
+}
+
+.dominators-equivalent {
+    background-color: rgba(255, 193, 7, 0.1);
+    border-left: 4px solid var(--dominators-yellow);
+}
+
+.footer {
+    background-color: #111;
+    color: #fff;
+    text-align: center;
+    padding: 15px 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 5px;
+}
+
+.footer-item {
+    margin: 0 10px;
+}
+
+.footer-item a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.footer-item a:hover {
+    color: #4a7dc7;
+}
+
+.footer .fab {
+    font-size: 1.2rem;
+}
+
+.copyright {
+    margin-top: 5px;
+    font-size: 0.85rem;
+    opacity: 0.7;
+    text-align: center;
+}
+
+.copyright a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.copyright a:hover {
+    text-decoration: underline;
+}
+
+.disclaimer {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #777;
+    margin-top: 10px;
+    padding: 5px 15px;
+    direction: rtl;
+}
+
+@media (max-width: 768px) {
+    .unit-tables {
+        flex-direction: column;
+    }
+    
+    .unit-table {
+        min-width: 100%;
+    }
+    
+    .comparison-inputs, .battle-inputs, .equivalent-inputs {
+        flex-direction: column;
+    }
+    
+    .unit-selection, .battle-unit, .equivalent-unit {
+        width: 100%;
+    }
+    
+    .unit-select {
+        width: 100%;
+    }
+    
+    .header-icons {
+        flex-direction: column;
+    }
+    
+    .banner {
+        height: 200px;
+    }
+    
+    .unit-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .footer-item {
+        margin: 0;
+    }
+    
+    body {
+        padding-bottom: 150px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 1.6rem;
+    }
+    
+    h2 {
+        font-size: 1.3rem;
+    }
+    
+    table {
+        font-size: 0.8rem;
+    }
+    
+    th, td {
+        padding: 0.4em;
+    }
+    
+    .banner {
+        height: 150px;
+    }
+    
+    body {
+        padding-bottom: 180px;
+    }
+}
+
+/* New styles for archer sections */
+.helios-archer {
+    color: var(--helios-red);
+}
+
+.dominators-archer {
+    color: var(--dominators-purple);
+}
+
+.tab-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1.5em;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--light-blue);
+    color: var(--dark-blue);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-button:hover {
+    background-color: var(--primary-blue);
+    color: var(--white);
+}
+
+.tab-button.active {
+    background-color: var(--dark-blue);
+    color: var(--white);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+    </style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+
+        
+<div class="banner">
+    <img src="whiteout-cover.jpg" alt="Whiteout Survival Cover">
+</div>
+
+            <img src="banner.jpg" alt="Whiteout Survival Banner">
+        </div>
+        
+        
+<div class="banner">
+    <img src="https://i.imgur.com/ftuzpGp.jpg" alt="Whiteout Survival Cover">
+</div>
+
+<header>
+            <div class="header-icons">
+                <div class="icon-container">
+                    <svg class="unit-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="45" fill="#cb3535" />
+                        <text x="50" y="65" font-size="30" text-anchor="middle" fill="white">H</text>
+                    </svg>
+                </div>
+                <div class="header-text">
+                    <h1>مقارنة وحدات المشاة والرماة - Whiteout Survival</h1>
+                    <p>مقارنة تفاعلية بين وحدات مشاة ورماة هيليوس والمهيمنين في جميع المستويات</p>
+                </div>
+                <div class="icon-container">
+                    <svg class="unit-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="45" fill="#8c3689" />
+                        <text x="50" y="65" font-size="30" text-anchor="middle" fill="white">D</text>
+                    </svg>
+                </div>
+            </div>
+        </header>
+
+        <div class="tab-buttons">
+            <button class="tab-button active" id="infantry-tab-button">وحدات المشاة</button>
+            <button class="tab-button" id="archer-tab-button">وحدات الرماة</button>
+            <button class="tab-button" id="mixed-tab-button">المقارنات المختلطة</button>
+            <button class="tab-button" id="battle-tab-button">محاكاة المعارك</button>
+        </div>
+
+        <!-- Infantry Tab Content -->
+        <div id="infantry-tab" class="tab-content active">
+            <h2>بيانات وحدات المشاة</h2>
+            <div class="unit-tables">
+                <div class="unit-table">
+                    <h3>مشاة هيليوس</h3>
+                    <table id="helios-infantry-table">
+                        <thead>
+                            <tr>
+                                <th>المستوى</th>
+                                <th>هجوم</th>
+                                <th>دفاع</th>
+                                <th>صحة</th>
+                                <th>فتك</th>
+                                <th>إجمالي القوة</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="unit-table">
+                    <h3>المشاة المهيمنين</h3>
+                    <table id="dominators-infantry-table">
+                        <thead>
+                            <tr>
+                                <th>المستوى</th>
+                                <th>هجوم</th>
+                                <th>دفاع</th>
+                                <th>صحة</th>
+                                <th>فتك</th>
+                                <th>إجمالي القوة</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <h2>مقارنة وحدات المشاة</h2>
+            <div class="comparison-section">
+                <div class="comparison-inputs">
+                    <div class="unit-selection">
+                        <div class="unit-select">
+                            <label for="helios-infantry-level">مستوى مشاة هيليوس</label>
+                            <select id="helios-infantry-level">
+                                <option value="1">المستوى 1</option>
+                                <option value="2">المستوى 2</option>
+                                <option value="3">المستوى 3</option>
+                                <option value="4">المستوى 4</option>
+                                <option value="5">المستوى 5</option>
+                                <option value="6">المستوى 6</option>
+                                <option value="7">المستوى 7</option>
+                                <option value="8">المستوى 8</option>
+                                <option value="9">المستوى 9</option>
+                                <option value="10">المستوى 10</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="unit-selection">
+                        <div class="unit-select">
+                            <label for="dominators-infantry-level">مستوى المشاة المهيمنين</label>
+                            <select id="dominators-infantry-level">
+                                <option value="1">المستوى 1</option>
+                                <option value="2">المستوى 2</option>
+                                <option value="3">المستوى 3</option>
+                                <option value="4">المستوى 4</option>
+                                <option value="5">المستوى 5</option>
+                                <option value="6">المستوى 6</option>
+                                <option value="7">المستوى 7</option>
+                                <option value="8">المستوى 8</option>
+                                <option value="9">المستوى 9</option>
+                                <option value="10">المستوى 10</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn primary" id="compare-infantry-btn">قارن</button>
+                </div>
+                <div class="comparison-result" id="infantry-comparison-result" style="display: none;">
+                    <h3>نتائج المقارنة</h3>
+                    <table class="comparison-table" id="infantry-comparison-table">
+                        <thead>
+                            <tr>
+                                <th>الإحصائية</th>
+                                <th>مشاة هيليوس</th>
+                                <th>المشاة المهيمنين</th>
+                                <th>الفرق</th>
+                                <th>النسبة المئوية</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                    <div class="winner-container" id="infantry-winner-container">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <h2>رسم بياني لقوة وحدات المشاة</h2>
+            <div class="power-chart-section">
+                <div class="chart-container">
+                    <canvas id="infantry-power-chart"></canvas>
+                </div>
+                <div class="chart-explanation">
+                    <p>يوضح الرسم البياني أعلاه مقارنة بين قوة هجوم وحدات مشاة هيليوس (باللون الأحمر) ووحدات المشاة المهيمنين (باللون الأرجواني) عبر المستويات المختلفة. يمكنك ملاحظة أن وحدات مشاة هيليوس تتفوق في قوة الهجوم في معظم المستويات.</p>
+                </div>
+            </div>
+
+            <h2>حاسبة المعركة بين وحدات المشاة</h2>
+            <div class="battle-calculator">
+                <div class="battle-inputs">
+                    <div class="battle-unit">
+                        <div class="unit-select">
+                            <label for="helios-infantry-battle-level">مستوى مشاة هيليوس</label>
+                            <select id="helios-infantry-battle-level">
+                                <option value="1">المستوى 1</option>
+                                <option value="2">المستوى 2</option>
+                                <option value="3">المستوى 3</option>
+                                <option value="4">المستوى 4</option>
+                                <option value="5">المستوى 5</option>
+                                <option value="6">المستوى 6</option>
+                                <option value="7">المستوى 7</option>
+                                <option value="8">المستوى 8</option>
+                                <option value="9">المستوى 9</option>
+                                <option value="10">المستوى 10</option>
+                            </select>
+                        </div>
+                        <div class="unit-select">
+                            <label for="helios-infantry-battle-count">عدد الوحدات</label>
+                            <input type="number" id="helios-infantry-battle-count" min="1" max="1000" value="100">
+                        </div>
+                    </div>
+                    <div class="battle-unit">
+                        <div class="unit-select">
+                            <label for="dominators-infantry-battle-level">مستوى المشاة المهيمنين</label>
+                            <select id="dominators-infantry-battle-level">
+                                <option value="1">المستوى 1</option>
+                                <option value="2">المستوى 2</option>
+                                <option value="3">المستوى 3</option>
+                                <option value="4">المستوى 4</option>
+                                <option value="5">المستوى 5</option>
+                                <option value="6">المستوى 6</option>
+                                <option value="7">المستوى 7</option>
+                                <option value="8">المستوى 8</option>
+                                <option value="9">المستوى 9</option>
+                                <option value="10">المستوى 10</option>
+                            </select>
+                        </div>
+                        <div class="unit-select">
+                            <label for="dominators-infantry-battle-count">عدد الوحدات</label>
+                            <input type="number" id="dominators-infantry-battle-count" min="1" max="1000" value="100">
+                        </div>
+                    </div>
+                    <button class="btn primary" id="simulate-infantry-battle-btn">محاكاة المعركة</button>
+                </div>
+                <div class="battle-result" id="infantry-battle-result" style="display: none;">
+                    <div id="infantry-battle-winner"></div>
+                    <div class="battle-chart-container">
+                        <canvas id="infantry-battle-chart"></canvas>
+                    </div>
+                    <div id="infantry-battle-explanation" class="chart-explanation">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <h2>مستويات متكافئة من وحدات المشاة</h2>
+            <div class="equivalent-level-section">
+                <div class="equivalent-inputs">
+                    <div class="equivalent-unit">
+                        <div class="unit-select">
+                            <label>اختر نوع الوحدة</label>
+                            <select id="infantry-unit-type">
+                                <option value="helios">مشاة هيليوس</option>
+                                <option value="dominators">المشاة المهيمنين</option>
+                            </select>
+                        </div>
+                        <div class="unit-select">
+                            <label for="infantry-level-input">المستوى</label>
+                            <select id="infantry-level-input">
+                                <option value="1">المستوى 1</option>
+                                <option value="2">المستوى 2</option>
+                                <option value="3">المستوى 3</option>
+                                <option value="4">المستوى 4</option>
+                                <option value="5">المستوى 5</option>
+                                <option value="6">المستوى 6</option>
+                                <option value="7">المستوى 7</option>
+                                <option value="8">المستوى 8</option>
+                                <option value="9">المستوى 9</option>
+                                <option value="10">المستوى 10</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn primary" id="find-infantry-equivalent-btn">ابحث عن المستوى المكافئ</button>
+                </div>
+                <div id="infantry-equivalent-message"></div>
+                <div class="equivalent-chart-container">
+                    <canvas id="infantry-equivalent-chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Archer Tab Content (NEW) -->
+        <div id="archer-tab" class="tab-content">
+            <h2>بيانات وحدات الرماة</h2>
+            <div class="unit-tables">
+                <div class="unit-table">
+                    <h3 class="helios-archer">رماة هيليوس</h3>
+                    <table id="helios-archer-table">
+                        <thead>
+                            <tr>
+                                <th>المستوى</th>
+                                <th>هجوم</th>
+                                <th>دفاع</th>
+                                <th>صحة</th>
+                                <th>فتك</th>
+                                <th>إجمالي القوة</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="unit-table">
+                    <h3 class="dominators-archer">الرماة المهيمنين</h3>
+                    <table id="dominators-archer-table">
+                        <thead>
+                            <tr>
+                                <th>المستوى</th>
+                                <th>هجوم</th>
+                                <th>دفاع</th>
+                                <th>صحة</th>
+                                <th>فتك</th>
+                                <th>إجمالي القوة</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <h2>مقارنة وحدات الرماة</h2>
+            <div class="comparison-section">
+                <div class="comparison-inputs">
+                    <div class="unit-selection">
+                        <div class="unit-select">
+                            <label for="helios-archer-level">مستوى رماة هيليوس</label>
+                            <select id="helios-archer-level">
+                                <option value="1">المستوى 1</option>
+                                <option value="2">المستوى 2</option>
+                                <option value="3">المستوى 3</option>
+                                <option value="4">المستوى 4</option>
+                                <option value="5">المستوى 5</option>
+                                <option value="6">المستوى 6</option>
+                                <option value="7">المستوى 7</option>
+                                <option value="8">المستوى 8</option>
+                                <option value="9">المستوى 9</option>
+                                <option value="10">المستوى 10</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="unit-selection">
+                        <div class="unit-select">
+                            <label for="dominators-archer-level">مستوى الرماة المهيمنين</label>
+                            <select id="dominators-archer-level">
+                                <option value="1">المستوى 1</option>
+                                <option value="2">المستوى 2</option>
+                                <option value="3">المستوى 3</option>
+                                <option value="4">المستوى 4</option>
+                                <option value="5">المستوى 5</option>
+                                <option value="6">المستوى 6</option>
+                                <option value="7">المستوى 7</option>
+                                <option value="8">المستوى 8</option>
+                                <option value="9">المستوى 9</option>
+                                <option value="10">المستوى 10</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn primary" id="compare-archer-btn">قارن</button>
+                </div>
+                <div class="comparison-result" id="archer-comparison-result" style="display: none;">
+                    <h3>نتائج المقارنة</h3>
+                    <table class="comparison-table" id="archer-comparison-table">
+                        <thead>
+                            <tr>
+                                <th>الإحصائية</th>
+                                <th>رماة هيليوس</th>
+                                <th>الرماة المهيمنين</th>
+                                <th>الفرق</th>
+                                <th>النسبة المئوية</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                    <div class="winner-container" id="archer-winner-container">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <h2>رسم بياني لقوة وحدات الرماة</h2>
+            <div class="power-chart-section">
+                <div class="chart-container">
+                    <canvas id="archer-power-chart"></canvas>
+                </div>
+                <div class="chart-explanation">
+                    <p>يوضح الرسم البياني أعلاه مقارنة بين قوة هجوم وحدات رماة هيليوس (باللون الأحمر) ووحدات الرماة المهيمنين (باللون الأرجواني) عبر المستويات المختلفة. يمكنك ملاحظة اختلاف نقاط القوة في كل مستوى.</p>
+                </div>
+            </div>
+
+            
+<!-- جدول مقارنة مرئي للرماة -->
+<h2>مقارنة مرئية بين رماة هيليوس والرماة المهيمنين</h2>
+<div class="comparison-section">
+    <div class="chart-container">
+        <canvas id="archer-stats-chart"></canvas>
+    </div>
+    <div class="chart-explanation">
+        <p>يعرض الرسم البياني مقارنة مباشرة بين إحصائيات الهجوم، الدفاع، الصحة، والفتك لرماة هيليوس والمهيمنين في المستوى المختار.</p>
+    </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const ctx = document.getElementById('archer-stats-chart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['هجوم', 'دفاع', 'صحة', 'فتك'],
+            datasets: [
+                {
+                    label: 'رماة هيليوس',
+                    backgroundColor: 'rgba(203, 53, 53, 0.6)',
+                    borderColor: 'rgba(203, 53, 53, 1)',
+                    borderWidth: 1,
+                    data: [17, 13, 13, 18]  // القيم الحالية
+                },
+                {
+                    label: 'الرماة المهيمنين',
+                    backgroundColor: 'rgba(140, 54, 137, 0.6)',
+                    borderColor: 'rgba(140, 54, 137, 1)',
+                    borderWidth: 1,
+                    data: [15, 23, 23, 15]  // القيم المقابلة
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 30
+                }
+            }
+        }
+    });
+});
+</script>
+
+<h2>حاسبة المعركة بين وحدات الرماة</h2>
+            <div class="battle-calculator">
+                <div class="battle-inputs">
+                    <div class="battle-unit">
+                        <div class="unit-select">
+                            <label for="helios-archer-battle-level">مستوى رماة هيليوس</label>
+                            <select id="helios-archer-battle-level">
+                                <option value="1">المستوى 1</option>
+                                <option value="2">المستوى 2</option>
+                                <option value="3">المستوى 3</option>
+                                <option value="4">المستوى 4</option>
+                                <option value="5">المستوى 5</option>
+                                <option value="6">المستوى 6</option>
+                                <option value="7">المستوى 7</option>
+                                <option value="8">المستوى 8</option>
+                                <option value="9">المستوى 9</option>
+                                <option value="10">المستوى 10</option>
+                            </select>
+                        </div>
+                        <div class="unit-select">
+                            <label for="helios-archer-battle-count">عدد الوحدات</label>
+                            <input type="number" id="helios-archer-battle-count" min="1" max="1000" value="100">
+                        </div>
+                    </div>
+                    <div class="battle-unit">
+                        <div class="unit-select">
+                            <label for="dominators-archer-battle-level">مستوى الرماة المهيمنين</label>
+                            <select id="dominators-archer-battle-level">
+                                <option value="1">المستوى 1</option>
+                                <option value="2">المستوى 2</option>
+                                <option value="3">المستوى 3</option>
+                                <option value="4">المستوى 4</option>
+                                <option value="5">المستوى 5</option>
+                                <option value="6">المستوى 6</option>
+                                <option value="7">المستوى 7</option>
+                                <option value="8">المستوى 8</option>
+                                <option value="9">المستوى 9</option>
+                                <option value="10">المستوى 10</option>
+                            </select>
+                        </div>
+                        <div class="unit-select">
+                            <label for="dominators-archer-battle-count">عدد الوحدات</label>
+                            <input type="number" id="dominators-archer-battle-count" min="1" max="1000" value="100">
+                        </div>
+                    </div>
+                    <button class="btn primary" id="simulate-archer-battle-btn">محاكاة المعركة</button>
+                </div>
+                <div class="battle-result" id="archer-battle-result" style="display: none;">
+                    <div id="archer-battle-winner"></div>
+                    <div class="battle-chart-container">
+                        <canvas id="archer-battle-chart"></canvas>
+                    </div>
+                    <div id="archer-battle-explanation" class="chart-explanation">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <h2>مستويات متكافئة من وحدات الرماة</h2>
+            <div class="equivalent-level-section">
+                <div class="equivalent-inputs">
+                    <div class="equivalent-unit">
+                        <div class="unit-select">
+                            <label>اختر نوع الوحدة</label>
+                            <select id="archer-unit-type">
+                                <option value="helios">رماة هيليوس</option>
+                                <option value="dominators">الرماة المهيمنين</option>
+                            </select>
+                        </div>
+                        <div class="unit-select">
+                            <label for="archer-level-input">المستوى</label>
+                            <select id="archer-level-input">
+                                <option value="1">المستوى 1</option>
+                                <option value="2">المستوى 2</option>
+                                <option value="3">المستوى 3</option>
+                                <option value="4">المستوى 4</option>
+                                <option value="5">المستوى 5</option>
+                                <option value="6">المستوى 6</option>
+                                <option value="7">المستوى 7</option>
+                                <option value="8">المستوى 8</option>
+                                <option value="9">المستوى 9</option>
+                                <option value="10">المستوى 10</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn primary" id="find-archer-equivalent-btn">ابحث عن المستوى المكافئ</button>
+                </div>
+                <div id="archer-equivalent-message"></div>
+                <div class="equivalent-chart-container">
+                    <canvas id="archer-equivalent-chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mixed Units Comparison Tab -->
+        <div id="mixed-tab" class="tab-content">
+            <h2>مقارنة الوحدات المختلطة</h2>
+            <div class="comparison-section">
+                <div class="comparison-inputs">
+                    <div class="unit-selection">
+                        <div class="unit-select">
+                            <label for="mixed-unit1-type">الوحدة الأولى</label>
+                            <select id="mixed-unit1-type">
+                                <option value="infantry-helios">مشاة هيليوس</option>
+                                <option value="infantry-dominators">المشاة المهيمنين</option>
+                                <option value="archer-helios">رماة هيليوس</option>
+                                <option value="archer-dominators">الرماة المهيمنين</option>
+                            </select>
+                        </div>
+                        <div class="unit-select">
+                            <label for="mixed-unit1-level">المستوى</label>
+                            <select id="mixed-unit1-level">
+                                <option value="1">المستوى 1</option>
+                                <option value="2">المستوى 2</option>
+                                <option value="3">المستوى 3</option>
+                                <option value="4">المستوى 4</option>
+                                <option value="5">المستوى 5</option>
+                                <option value="6">المستوى 6</option>
+                                <option value="7">المستوى 7</option>
+                                <option value="8">المستوى 8</option>
+                                <option value="9">المستوى 9</option>
+                                <option value="10">المستوى 10</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="unit-selection">
+                        <div class="unit-select">
+                            <label for="mixed-unit2-type">الوحدة الثانية</label>
+                            <select id="mixed-unit2-type">
+                                <option value="infantry-helios">مشاة هيليوس</option>
+                                <option value="infantry-dominators" selected>المشاة المهيمنين</option>
+                                <option value="archer-helios">رماة هيليوس</option>
+                                <option value="archer-dominators">الرماة المهيمنين</option>
+                            </select>
+                        </div>
+                        <div class="unit-select">
+                            <label for="mixed-unit2-level">المستوى</label>
+                            <select id="mixed-unit2-level">
+                                <option value="1">المستوى 1</option>
+                                <option value="2">المستوى 2</option>
+                                <option value="3">المستوى 3</option>
+                                <option value="4">المستوى 4</option>
+                                <option value="5">المستوى 5</option>
+                                <option value="6">المستوى 6</option>
+                                <option value="7">المستوى 7</option>
+                                <option value="8">المستوى 8</option>
+                                <option value="9">المستوى 9</option>
+                                <option value="10">المستوى 10</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn primary" id="compare-mixed-btn">قارن</button>
+                </div>
+                <div class="comparison-result" id="mixed-comparison-result" style="display: none;">
+                    <h3>نتائج المقارنة</h3>
+                    <table class="comparison-table" id="mixed-comparison-table">
+                        <thead>
+                            <tr>
+                                <th>الإحصائية</th>
+                                <th id="mixed-unit1-header">الوحدة الأولى</th>
+                                <th id="mixed-unit2-header">الوحدة الثانية</th>
+                                <th>الفرق</th>
+                                <th>النسبة المئوية</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                    <div id="mixed-winner-container" class="winner-container">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="mixed-comparison-chart"></canvas>
+                </div>
+                <div class="chart-explanation">
+                    يوضح الرسم البياني المقارنة بين الوحدات المختلفة. يمكنك رؤية الفروق في القوة الهجومية والدفاعية والصحة والفتك.
+                </div>
+            </div>
+        </div>
+
+        <!-- Battle Simulator Tab -->
+        <div id="battle-tab" class="tab-content">
+            <h2>محاكاة المعارك بين الوحدات المختلفة</h2>
+            <div class="battle-calculator">
+                <div class="battle-inputs">
+                    <div class="battle-unit">
+                        <div class="unit-select">
+                            <label for="battle-unit1-type">وحدة الهجوم</label>
+                            <select id="battle-unit1-type">
+                                <option value="infantry-helios">مشاة هيليوس</option>
+                                <option value="infantry-dominators">المشاة المهيمنين</option>
+                                <option value="archer-helios" selected>رماة هيليوس</option>
+                                <option value="archer-dominators">الرماة المهيمنين</option>
+                            </select>
+                        </div>
+                        <div class="unit-select">
+                            <label for="battle-unit1-level">المستوى</label>
+                            <select id="battle-unit1-level">
+                                <option value="1">المستوى 1</option>
+                                <option value="2">المستوى 2</option>
+                                <option value="3">المستوى 3</option>
+                                <option value="4">المستوى 4</option>
+                                <option value="5">المستوى 5</option>
+                                <option value="6">المستوى 6</option>
+                                <option value="7">المستوى 7</option>
+                                <option value="8">المستوى 8</option>
+                                <option value="9">المستوى 9</option>
+                                <option value="10">المستوى 10</option>
+                            </select>
+                        </div>
+                        <div class="unit-select">
+                            <label for="battle-unit1-count">عدد الوحدات</label>
+                            <input type="number" id="battle-unit1-count" min="1" max="1000" value="100">
+                        </div>
+                    </div>
+                    <div class="battle-unit">
+                        <div class="unit-select">
+                            <label for="battle-unit2-type">وحدة الدفاع</label>
+                            <select id="battle-unit2-type">
+                                <option value="infantry-helios">مشاة هيليوس</option>
+                                <option value="infantry-dominators" selected>المشاة المهيمنين</option>
+                                <option value="archer-helios">رماة هيليوس</option>
+                                <option value="archer-dominators">الرماة المهيمنين</option>
+                            </select>
+                        </div>
+                        <div class="unit-select">
+                            <label for="battle-unit2-level">المستوى</label>
+                            <select id="battle-unit2-level">
+                                <option value="1">المستوى 1</option>
+                                <option value="2">المستوى 2</option>
+                                <option value="3">المستوى 3</option>
+                                <option value="4">المستوى 4</option>
+                                <option value="5">المستوى 5</option>
+                                <option value="6">المستوى 6</option>
+                                <option value="7">المستوى 7</option>
+                                <option value="8">المستوى 8</option>
+                                <option value="9">المستوى 9</option>
+                                <option value="10">المستوى 10</option>
+                            </select>
+                        </div>
+                        <div class="unit-select">
+                            <label for="battle-unit2-count">عدد الوحدات</label>
+                            <input type="number" id="battle-unit2-count" min="1" max="1000" value="100">
+                        </div>
+                    </div>
+                    <button class="btn primary" id="simulate-battle-btn">محاكاة المعركة</button>
+                </div>
+                <div class="battle-result" id="battle-result" style="display: none;">
+                    <div id="battle-winner" class="winner-container">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                    <div class="battle-chart-container">
+                        <canvas id="battle-chart"></canvas>
+                    </div>
+                    <div id="battle-explanation" class="chart-explanation">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-item">
+                <a href="https://www.youtube.com/@whiteoutsurvivel" target="_blank">
+                    <i class="fab fa-youtube"></i> يوتيوب
+                </a>
+            </div>
+            <div class="footer-item">
+                <a href="https://t.me/Whiteoutsurvivel" target="_blank">
+                    <i class="fab fa-telegram"></i> تلجرام
+                </a>
+            </div>
+            <div class="footer-item">
+                <a href="https://discord.gg/9p2DZsz9" target="_blank">
+                    <i class="fab fa-discord"></i> ديسكورد
+                </a>
+            </div>
+            <div class="footer-item">
+                <a href="#" target="_blank">
+                    <i class="fas fa-globe"></i> موقع Whiteout
+                </a>
+            </div>
+        </div>
+        <div class="copyright">
+            جميع الحقوق محفوظة لدى المصمم <a href="https://t.me/abukhaa6r" target="_blank">@abukhaa6r</a> | رابط التليجرام: <a href="https://t.me/abukhaa6r" target="_blank">https://t.me/abukhaa6r</a>
+        </div>
+    </footer>
+    <div class="disclaimer">
+        تنبيه: المعايير في هذه الصفحة تعتمد فقط على قوة القوات، أما عتاد الحاكم والأبطال والدعم الخارجي فلها تأثير كبير في نتائج المعركة الواقعية.
+    </div>
+
+    <script>
+// هيكل بيانات للوحدات
+const infantryData = {
+    helios: [
+        { level: 1, attack: 13, defense: 16, health: 18, lethality: 12 },
+        { level: 2, attack: 14, defense: 17, health: 19, lethality: 13 },
+        { level: 3, attack: 15, defense: 18, health: 20, lethality: 14 },
+        { level: 4, attack: 15, defense: 19, health: 21, lethality: 15 },
+        { level: 5, attack: 16, defense: 22, health: 22, lethality: 15 },
+        { level: 6, attack: 17, defense: 23, health: 23, lethality: 16 },
+        { level: 7, attack: 17, defense: 24, health: 24, lethality: 16 },
+        { level: 8, attack: 18, defense: 25, health: 25, lethality: 17 },
+        { level: 9, attack: 18, defense: 27, health: 26, lethality: 17 },
+        { level: 10, attack: 19, defense: 28, health: 27, lethality: 18 }
+    ],
+    dominators: [
+        { level: 1, attack: 11, defense: 14, health: 16, lethality: 10 },
+        { level: 2, attack: 12, defense: 16, health: 17, lethality: 11 },
+        { level: 3, attack: 13, defense: 17, health: 18, lethality: 12 },
+        { level: 4, attack: 13, defense: 18, health: 19, lethality: 13 },
+        { level: 5, attack: 14, defense: 20, health: 20, lethality: 13 },
+        { level: 6, attack: 14, defense: 21, health: 21, lethality: 13 },
+        { level: 7, attack: 15, defense: 22, health: 22, lethality: 14 },
+        { level: 8, attack: 15, defense: 23, health: 23, lethality: 15 },
+        { level: 9, attack: 16, defense: 25, health: 24, lethality: 15 },
+        { level: 10, attack: 18, defense: 26, health: 25, lethality: 16 }
+    ]
+};
+
+// بيانات وحدات الرماة (ديناميكية من ملفات CSV)
+const archerData = {
+    helios: [
+        { level: 1, attack: 17, defense: 13, health: 13, lethality: 18 },
+        { level: 2, attack: 19, defense: 14, health: 14, lethality: 19 },
+        { level: 3, attack: 20, defense: 15, health: 15, lethality: 20 },
+        { level: 4, attack: 21, defense: 16, health: 15, lethality: 21 },
+        { level: 5, attack: 23, defense: 16, health: 16, lethality: 22 },
+        { level: 6, attack: 24, defense: 17, health: 16, lethality: 23 },
+        { level: 7, attack: 25, defense: 18, health: 17, lethality: 24 },
+        { level: 8, attack: 26, defense: 19, health: 18, lethality: 25 },
+        { level: 9, attack: 28, defense: 19, health: 18, lethality: 26 },
+        { level: 10, attack: 30, defense: 21, health: 20, lethality: 27 }
+    ],
+    dominators: [
+        { level: 1, attack: 15, defense: 11, health: 11, lethality: 16 },
+        { level: 2, attack: 17, defense: 12, health: 12, lethality: 17 },
+        { level: 3, attack: 18, defense: 13, health: 13, lethality: 18 },
+        { level: 4, attack: 19, defense: 14, health: 13, lethality: 19 },
+        { level: 5, attack: 21, defense: 14, health: 14, lethality: 20 },
+        { level: 6, attack: 22, defense: 15, health: 14, lethality: 21 },
+        { level: 7, attack: 23, defense: 15, health: 15, lethality: 22 },
+        { level: 8, attack: 24, defense: 16, health: 15, lethality: 23 },
+        { level: 9, attack: 26, defense: 17, health: 16, lethality: 24 },
+        { level: 10, attack: 27, defense: 19, health: 17, lethality: 25 }
+    ]
+};
+
+// حساب إجمالي القوة لكل وحدة
+function calculateTotalPower(unitData) {
+    return unitData.map(unit => {
+        // حساب إجمالي القوة ببساطة عن طريق جمع جميع الإحصاءات
+        const totalPower = unit.attack + unit.defense + unit.health + unit.lethality;
+        return { ...unit, totalPower };
+    });
+}
+
+// تحديث البيانات بإضافة إجمالي القوة
+infantryData.helios = calculateTotalPower(infantryData.helios);
+infantryData.dominators = calculateTotalPower(infantryData.dominators);
+archerData.helios = calculateTotalPower(archerData.helios);
+archerData.dominators = calculateTotalPower(archerData.dominators);
+
+// تهيئة الصفحة عند التحميل
+document.addEventListener('DOMContentLoaded', function() {
+    // ملء جداول وحدات المشاة
+    populateUnitTable('helios-infantry-table', infantryData.helios);
+    populateUnitTable('dominators-infantry-table', infantryData.dominators);
+    
+    // ملء جداول وحدات الرماة
+    populateUnitTable('helios-archer-table', archerData.helios);
+    populateUnitTable('dominators-archer-table', archerData.dominators);
+    
+    // إعداد أحداث النقر على الأزرار
+    document.getElementById('compare-infantry-btn').addEventListener('click', compareInfantryUnits);
+    document.getElementById('simulate-infantry-battle-btn')?.addEventListener('click', simulateInfantryBattle);
+    document.getElementById('find-infantry-equivalent-btn')?.addEventListener('click', findInfantryEquivalent);
+    
+    // إعداد أحداث أزرار وحدات الرماة
+    document.getElementById('compare-archer-btn')?.addEventListener('click', compareArcherUnits);
+    document.getElementById('simulate-archer-battle-btn')?.addEventListener('click', simulateArcherBattle);
+    document.getElementById('find-archer-equivalent-btn')?.addEventListener('click', findArcherEquivalent);
+    
+    // إعداد أحداث أزرار المقارنة المختلطة ومحاكاة المعارك
+    document.getElementById('compare-mixed-btn')?.addEventListener('click', compareMixedUnits);
+    document.getElementById('simulate-battle-btn')?.addEventListener('click', simulateBattle);
+    
+    // إنشاء المخططات البيانية
+    createPowerChart();
+    createEquivalentCharts();
+    
+    // إنشاء مخططات المقارنة المختلطة ومحاكاة المعارك
+    createMixedChart();
+    createBattleChart();
+});
+
+// إعداد أحداث التبويب
+document.addEventListener('DOMContentLoaded', function() {
+    // إضافة مستمعي الأحداث لأزرار التبويب
+    document.getElementById('infantry-tab-button').addEventListener('click', function() {
+        switchTab('infantry-tab');
+    });
+    
+    document.getElementById('archer-tab-button').addEventListener('click', function() {
+        switchTab('archer-tab');
+    });
+    
+    document.getElementById('mixed-tab-button').addEventListener('click', function() {
+        switchTab('mixed-tab');
+    });
+    
+    document.getElementById('battle-tab-button').addEventListener('click', function() {
+        switchTab('battle-tab');
+    });
+});
+
+// وظيفة عرض التبويب المحدد
+function switchTab(tabId) {
+    try {
+        // إخفاء جميع المحتويات
+        document.querySelectorAll('.tab-content').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        
+        // إلغاء تنشيط جميع الأزرار
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.classList.remove('active');
+        });
+        
+        // عرض المحتوى المحدد
+        const tabElement = document.getElementById(tabId);
+        if (tabElement) {
+            tabElement.classList.add('active');
+        } else {
+            console.error(`Tab element with ID "${tabId}" not found`);
+        }
+        
+        // تنشيط الزر المحدد
+        const activeButton = document.getElementById(`${tabId}-button`);
+        if (activeButton) {
+            activeButton.classList.add('active');
+        } else {
+            console.error(`Button for tab "${tabId}" not found`);
+        }
+    } catch (error) {
+        console.error("Error in switchTab function:", error);
+    }
+}
+
+// ملء جدول الوحدات بالبيانات
+function populateUnitTable(tableId, unitData) {
+    const tableBody = document.querySelector(`#${tableId} tbody`);
+    tableBody.innerHTML = ''; // مسح البيانات الحالية
+    
+    unitData.forEach(unit => {
+        const row = document.createElement('tr');
+        
+        // تمييز مستويات معينة بألوان مختلفة
+        if (unit.level === 1) {
+            row.classList.add('level-1');
+        } else if (unit.level === 5) {
+            row.classList.add('level-5');
+        } else if (unit.level === 10) {
+            row.classList.add('level-10');
+        }
+        
+        row.innerHTML = `
+            <td>${unit.level}</td>
+            <td>${unit.attack}</td>
+            <td>${unit.defense}</td>
+            <td>${unit.health}</td>
+            <td>${unit.lethality}</td>
+            <td>${unit.totalPower}</td>
+        `;
+        
+        tableBody.appendChild(row);
+    });
+}
+
+// مقارنة وحدات المشاة
+function compareInfantryUnits() {
+    const heliosLevel = parseInt(document.getElementById('helios-infantry-level').value);
+    const dominatorsLevel = parseInt(document.getElementById('dominators-infantry-level').value);
+    
+    compareUnits(
+        'infantry-comparison-result',
+        'infantry-comparison-table',
+        'infantry-winner-container',
+        infantryData.helios,
+        infantryData.dominators,
+        heliosLevel,
+        dominatorsLevel,
+        'مشاة هيليوس',
+        'المشاة المهيمنين'
+    );
+}
+
+// مقارنة وحدات الرماة
+function compareArcherUnits() {
+    const heliosLevel = parseInt(document.getElementById('helios-archer-level').value);
+    const dominatorsLevel = parseInt(document.getElementById('dominators-archer-level').value);
+    
+    compareUnits(
+        'archer-comparison-result',
+        'archer-comparison-table',
+        'archer-winner-container',
+        archerData.helios,
+        archerData.dominators,
+        heliosLevel,
+        dominatorsLevel,
+        'رماة هيليوس',
+        'الرماة المهيمنين'
+    );
+}
+
+// وظيفة المقارنة العامة بين الوحدات
+function compareUnits(resultId, tableId, winnerId, heliosData, dominatorsData, heliosLevel, dominatorsLevel, heliosName, dominatorsName) {
+    const helios = heliosData.find(unit => unit.level === heliosLevel);
+    const dominators = dominatorsData.find(unit => unit.level === dominatorsLevel);
+    
+    const comparisonResult = document.getElementById(resultId);
+    comparisonResult.style.display = 'block';
+    
+    const tableBody = document.querySelector(`#${tableId} tbody`);
+    tableBody.innerHTML = '';
+    
+    // مقارنة جميع الإحصاءات
+    const stats = [
+        { name: 'المستوى', heliosValue: helios.level, dominatorsValue: dominators.level },
+        { name: 'الهجوم', heliosValue: helios.attack, dominatorsValue: dominators.attack },
+        { name: 'الدفاع', heliosValue: helios.defense, dominatorsValue: dominators.defense },
+        { name: 'الصحة', heliosValue: helios.health, dominatorsValue: dominators.health },
+        { name: 'الفتك', heliosValue: helios.lethality, dominatorsValue: dominators.lethality },
+        { name: 'إجمالي القوة', heliosValue: helios.totalPower, dominatorsValue: dominators.totalPower }
+    ];
+    
+    let heliosAdvantage = 0;
+    let dominatorsAdvantage = 0;
+    
+    stats.forEach(stat => {
+        const diff = stat.heliosValue - stat.dominatorsValue;
+        const percentage = ((Math.abs(diff) / Math.min(stat.heliosValue, stat.dominatorsValue)) * 100).toFixed(1);
+        
+        let diffClass = '';
+        if (diff > 0) {
+            diffClass = 'stat-better';
+            heliosAdvantage++;
+        } else if (diff < 0) {
+            diffClass = 'stat-worse';
+            dominatorsAdvantage++;
+        } else {
+            diffClass = 'stat-equal';
+        }
+        
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${stat.name}</td>
+            <td>${stat.heliosValue}</td>
+            <td>${stat.dominatorsValue}</td>
+            <td class="${diffClass}">${diff > 0 ? '+' : ''}${diff}</td>
+            <td>${diff !== 0 ? percentage + '%' : '-'}</td>
+        `;
+        
+        tableBody.appendChild(row);
+    });
+    
+    // تحديد الفائز
+    const winnerContainer = document.getElementById(winnerId);
+    let winnerHTML = '';
+    
+    if (helios.totalPower > dominators.totalPower) {
+        winnerContainer.className = 'winner-container winner-helios';
+        winnerHTML = `<h3>${heliosName} أقوى بنسبة ${((helios.totalPower / dominators.totalPower - 1) * 100).toFixed(1)}%</h3>`;
+    } else if (dominators.totalPower > helios.totalPower) {
+        winnerContainer.className = 'winner-container winner-dominators';
+        winnerHTML = `<h3>${dominatorsName} أقوى بنسبة ${((dominators.totalPower / helios.totalPower - 1) * 100).toFixed(1)}%</h3>`;
+    } else {
+        winnerContainer.className = 'winner-container winner-tie';
+        winnerHTML = `<h3>القوتان متساويتان بالضبط!</h3>`;
+    }
+    
+    winnerHTML += `<p>${heliosName} لديه تفوق في ${heliosAdvantage} إحصائيات، بينما ${dominatorsName} لديه تفوق في ${dominatorsAdvantage} إحصائيات.</p>`;
+    winnerContainer.innerHTML = winnerHTML;
+}
+
+// محاكاة معركة بين وحدات المشاة
+function simulateInfantryBattle() {
+    const heliosLevel = parseInt(document.getElementById('helios-infantry-battle-level').value);
+    const heliosCount = parseInt(document.getElementById('helios-infantry-battle-count').value);
+    const dominatorsLevel = parseInt(document.getElementById('dominators-infantry-battle-level').value);
+    const dominatorsCount = parseInt(document.getElementById('dominators-infantry-battle-count').value);
+    
+    simulateBattle(
+        'infantry-battle-result',
+        'infantry-battle-winner',
+        'infantry-battle-chart',
+        'infantry-battle-explanation',
+        infantryData.helios,
+        infantryData.dominators,
+        heliosLevel,
+        dominatorsLevel,
+        heliosCount,
+        dominatorsCount,
+        'مشاة هيليوس',
+        'المشاة المهيمنين'
+    );
+}
+
+// محاكاة معركة بين وحدات الرماة
+function simulateArcherBattle() {
+    const heliosLevel = parseInt(document.getElementById('helios-archer-battle-level').value);
+    const heliosCount = parseInt(document.getElementById('helios-archer-battle-count').value);
+    const dominatorsLevel = parseInt(document.getElementById('dominators-archer-battle-level').value);
+    const dominatorsCount = parseInt(document.getElementById('dominators-archer-battle-count').value);
+    
+    simulateBattle(
+        'archer-battle-result',
+        'archer-battle-winner',
+        'archer-battle-chart',
+        'archer-battle-explanation',
+        archerData.helios,
+        archerData.dominators,
+        heliosLevel,
+        dominatorsLevel,
+        heliosCount,
+        dominatorsCount,
+        'رماة هيليوس',
+        'الرماة المهيمنين'
+    );
+}
+
+// وظيفة محاكاة المعركة العامة
+function simulateBattle(resultId, winnerId, chartId, explanationId, heliosData, dominatorsData, heliosLevel, dominatorsLevel, heliosCount, dominatorsCount, heliosName, dominatorsName) {
+    const helios = heliosData.find(unit => unit.level === heliosLevel);
+    const dominators = dominatorsData.find(unit => unit.level === dominatorsLevel);
+    
+    const heliosTotalPower = helios.totalPower * heliosCount;
+    const dominatorsTotalPower = dominators.totalPower * dominatorsCount;
+    
+    const battleResult = document.getElementById(resultId);
+    battleResult.style.display = 'block';
+    
+    const winnerElement = document.getElementById(winnerId);
+    
+    // تحديد الفائز
+    if (heliosTotalPower > dominatorsTotalPower) {
+        winnerElement.className = 'helios-winner';
+        winnerElement.textContent = `الفائز: ${heliosName}`;
+    } else if (dominatorsTotalPower > heliosTotalPower) {
+        winnerElement.className = 'dominators-winner';
+        winnerElement.textContent = `الفائز: ${dominatorsName}`;
+    } else {
+        winnerElement.className = '';
+        winnerElement.textContent = `نتيجة المعركة: تعادل`;
+    }
+    
+    // إنشاء مخطط المعركة
+    const battleChart = createBattleChart(
+        chartId,
+        heliosName,
+        dominatorsName,
+        heliosCount,
+        dominatorsCount,
+        heliosTotalPower,
+        dominatorsTotalPower
+    );
+    
+    // تفسير النتائج
+    const explanation = document.getElementById(explanationId);
+    
+    const powerDifference = Math.abs(heliosTotalPower - dominatorsTotalPower);
+    const powerPercentage = ((powerDifference / Math.min(heliosTotalPower, dominatorsTotalPower)) * 100).toFixed(1);
+    
+    let winnerName = '';
+    if (heliosTotalPower > dominatorsTotalPower) {
+        winnerName = heliosName;
+    } else if (dominatorsTotalPower > heliosTotalPower) {
+        winnerName = dominatorsName;
+    }
+    
+    explanation.innerHTML = winnerName ? 
+        `<p>في هذه المحاكاة، يتفوق ${winnerName} بفارق ${powerDifference} نقطة قوة، أي بنسبة ${powerPercentage}%. قوة ${heliosName} الإجمالية هي ${heliosTotalPower} (${heliosCount} وحدة × ${helios.totalPower}). قوة ${dominatorsName} الإجمالية هي ${dominatorsTotalPower} (${dominatorsCount} وحدة × ${dominators.totalPower}).</p>` :
+        `<p>في هذه المحاكاة، تتعادل القوتان تمامًا! قوة ${heliosName} = ${heliosTotalPower} وقوة ${dominatorsName} = ${dominatorsTotalPower}.</p>`;
+}
+
+// البحث عن المستوى المكافئ للمشاة
+function findInfantryEquivalent() {
+    const unitType = document.getElementById('infantry-unit-type').value;
+    const level = parseInt(document.getElementById('infantry-level-input').value);
+    
+    findEquivalentLevel(
+        'infantry-equivalent-message',
+        'infantry-equivalent-chart',
+        infantryData,
+        unitType,
+        level,
+        'مشاة هيليوس',
+        'المشاة المهيمنين'
+    );
+}
+
+// البحث عن المستوى المكافئ للرماة
+function findArcherEquivalent() {
+    const unitType = document.getElementById('archer-unit-type').value;
+    const level = parseInt(document.getElementById('archer-level-input').value);
+    
+    findEquivalentLevel(
+        'archer-equivalent-message',
+        'archer-equivalent-chart',
+        archerData,
+        unitType,
+        level,
+        'رماة هيليوس',
+        'الرماة المهيمنين'
+    );
+}
+
+// وظيفة مقارنة الوحدات المختلطة
+function compareMixedUnits() {
+    const unit1TypeFull = document.getElementById('mixed-unit1-type').value;
+    const unit2TypeFull = document.getElementById('mixed-unit2-type').value;
+    const unit1Level = parseInt(document.getElementById('mixed-unit1-level').value);
+    const unit2Level = parseInt(document.getElementById('mixed-unit2-level').value);
+    
+    // تحليل نوع الوحدة للحصول على نوع الوحدة والمعسكر
+    const [unit1Category, unit1Faction] = unit1TypeFull.split('-');
+    const [unit2Category, unit2Faction] = unit2TypeFull.split('-');
+    
+    // تحديد مجموعة البيانات المناسبة وفقًا لنوع الوحدة
+    const unit1Data = unit1Category === 'infantry' ? infantryData[unit1Faction] : archerData[unit1Faction];
+    const unit2Data = unit2Category === 'infantry' ? infantryData[unit2Faction] : archerData[unit2Faction];
+    
+    // الحصول على بيانات الوحدات المحددة
+    const unit1 = unit1Data.find(unit => unit.level === unit1Level);
+    const unit2 = unit2Data.find(unit => unit.level === unit2Level);
+    
+    // إنشاء أسماء الوحدات للعرض
+    const unit1Name = getUnitDisplayName(unit1Category, unit1Faction);
+    const unit2Name = getUnitDisplayName(unit2Category, unit2Faction);
+    
+    // تحديث عناوين الجدول
+    document.getElementById('mixed-unit1-header').textContent = `${unit1Name} (مستوى ${unit1Level})`;
+    document.getElementById('mixed-unit2-header').textContent = `${unit2Name} (مستوى ${unit2Level})`;
+    
+    // إنشاء بيانات المقارنة
+    const comparisonTable = document.getElementById('mixed-comparison-table').querySelector('tbody');
+    comparisonTable.innerHTML = '';
+    
+    // مقارنة الإحصاءات المختلفة
+    const stats = [
+        { key: 'attack', name: 'الهجوم' },
+        { key: 'defense', name: 'الدفاع' },
+        { key: 'health', name: 'الصحة' },
+        { key: 'lethality', name: 'الفتك' },
+        { key: 'totalPower', name: 'إجمالي القوة' }
+    ];
+    
+    // إجمالي الفروق لتحديد الفائز
+    let totalDifference = 0;
+    
+    stats.forEach(stat => {
+        const row = document.createElement('tr');
+        const diff = unit1[stat.key] - unit2[stat.key];
+        const percentage = Math.round((diff / unit2[stat.key]) * 100);
+        
+        // تعيين الفئات للإحصاءات الأفضل/الأسوأ
+        const unit1Class = diff > 0 ? 'stat-better' : (diff < 0 ? 'stat-worse' : 'stat-equal');
+        const unit2Class = diff < 0 ? 'stat-better' : (diff > 0 ? 'stat-worse' : 'stat-equal');
+        
+        // تحديث إجمالي الفروق
+        totalDifference += diff;
+        
+        row.innerHTML = `
+            <td>${stat.name}</td>
+            <td class="${unit1Class}">${unit1[stat.key]}</td>
+            <td class="${unit2Class}">${unit2[stat.key]}</td>
+            <td>${diff > 0 ? '+' : ''}${diff}</td>
+            <td>${percentage > 0 ? '+' : ''}${percentage}%</td>
+        `;
+        
+        comparisonTable.appendChild(row);
+    });
+    
+    // تحديد الوحدة الفائزة
+    const winnerContainer = document.getElementById('mixed-winner-container');
+    
+    if (totalDifference > 0) {
+        // الوحدة الأولى هي الفائزة
+        winnerContainer.className = 'winner-container';
+        winnerContainer.classList.add(unit1Faction === 'helios' ? 'winner-helios' : 'winner-dominators');
+        winnerContainer.innerHTML = `<h3>الفائز: ${unit1Name} (مستوى ${unit1Level})</h3>`;
+    } else if (totalDifference < 0) {
+        // الوحدة الثانية هي الفائزة
+        winnerContainer.className = 'winner-container';
+        winnerContainer.classList.add(unit2Faction === 'helios' ? 'winner-helios' : 'winner-dominators');
+        winnerContainer.innerHTML = `<h3>الفائز: ${unit2Name} (مستوى ${unit2Level})</h3>`;
+    } else {
+        // تعادل
+        winnerContainer.className = 'winner-container winner-tie';
+        winnerContainer.innerHTML = `<h3>النتيجة: تعادل</h3>`;
+    }
+    
+    // تحديث وعرض نتيجة المقارنة
+    document.getElementById('mixed-comparison-result').style.display = 'block';
+    
+    // تحديث الرسم البياني
+    updateMixedChart(unit1, unit2, unit1Name, unit2Name);
+}
+
+// وظيفة محاكاة المعركة
+function simulateBattle() {
+    const unit1TypeFull = document.getElementById('battle-unit1-type').value;
+    const unit2TypeFull = document.getElementById('battle-unit2-type').value;
+    const unit1Level = parseInt(document.getElementById('battle-unit1-level').value);
+    const unit2Level = parseInt(document.getElementById('battle-unit2-level').value);
+    const unit1Count = parseInt(document.getElementById('battle-unit1-count').value);
+    const unit2Count = parseInt(document.getElementById('battle-unit2-count').value);
+    
+    // تحليل نوع الوحدة للحصول على نوع الوحدة والمعسكر
+    const [unit1Category, unit1Faction] = unit1TypeFull.split('-');
+    const [unit2Category, unit2Faction] = unit2TypeFull.split('-');
+    
+    // تحديد مجموعة البيانات المناسبة وفقًا لنوع الوحدة
+    const unit1Data = unit1Category === 'infantry' ? infantryData[unit1Faction] : archerData[unit1Faction];
+    const unit2Data = unit2Category === 'infantry' ? infantryData[unit2Faction] : archerData[unit2Faction];
+    
+    // الحصول على بيانات الوحدات المحددة
+    const unit1 = unit1Data.find(unit => unit.level === unit1Level);
+    const unit2 = unit2Data.find(unit => unit.level === unit2Level);
+    
+    // إنشاء أسماء الوحدات للعرض
+    const unit1Name = getUnitDisplayName(unit1Category, unit1Faction);
+    const unit2Name = getUnitDisplayName(unit2Category, unit2Faction);
+    
+    // تنفيذ المحاكاة
+    const battleResult = simulateBattleOutcome(unit1, unit2, unit1Count, unit2Count, unit1Category, unit2Category);
+    
+    // عرض النتيجة
+    displayBattleResult(battleResult, unit1Name, unit2Name, unit1Faction, unit2Faction);
+}
+
+// وظيفة مساعدة للحصول على اسم العرض للوحدة
+function getUnitDisplayName(category, faction) {
+    if (category === 'infantry') {
+        return faction === 'helios' ? 'مشاة هيليوس' : 'المشاة المهيمنين';
+    } else {
+        return faction === 'helios' ? 'رماة هيليوس' : 'الرماة المهيمنين';
+    }
+}
+
+// محاكاة معركة بين وحدتين
+function simulateBattleOutcome(unit1, unit2, unit1Count, unit2Count, unit1Category, unit2Category) {
+    // وحدة الهجوم والدفاع
+    // unit1 = وحدة الهجوم، unit2 = وحدة الدفاع
+    
+    // حساب قوة كل وحدة (مع تعديلات حسب النوع)
+    const unit1TotalForce = calculateAttackForce(unit1, unit1Count, unit1Category, unit2Category);
+    const unit2TotalForce = calculateDefenseForce(unit2, unit2Count, unit2Category, unit1Category);
+    
+    // حساب احتمالية الفوز لكل وحدة
+    const totalForce = unit1TotalForce + unit2TotalForce;
+    const unit1WinProbability = unit1TotalForce / totalForce;
+    
+    // عدد الدورات للمحاكاة
+    const roundsToSimulate = 10;
+    
+    // إنشاء محاكاة للمعركة على مدى 10 جولات
+    const battleData = [];
+    
+    let remainingUnit1 = unit1Count;
+    let remainingUnit2 = unit2Count;
+    
+    for (let round = 0; round < roundsToSimulate && remainingUnit1 > 0 && remainingUnit2 > 0; round++) {
+        // حساب الأضرار المتبادلة في كل جولة
+        const damage1to2 = calculateAttackDamage(unit1, remainingUnit1, unit1Category, unit2Category);
+        const damage2to1 = calculateDefenseDamage(unit2, remainingUnit2, unit2Category, unit1Category);
+        
+        // تحديث عدد الوحدات المتبقية
+        // وحدة الهجوم تتلقى ضرر أقل من وحدة الدفاع
+        remainingUnit1 -= Math.ceil(damage2to1 / (unit1.health + unit1.defense * 0.8));
+        // وحدة الدفاع تتلقى ضرر أكثر من وحدة الهجوم لكن لديها قدرة دفاع أعلى
+        remainingUnit2 -= Math.ceil(damage1to2 / (unit2.health + unit2.defense * 1.2));
+        
+        // ضمان عدم وجود قيم سالبة
+        remainingUnit1 = Math.max(0, remainingUnit1);
+        remainingUnit2 = Math.max(0, remainingUnit2);
+        
+        // تخزين بيانات الجولة
+        battleData.push({
+            round: round + 1,
+            unit1Remaining: remainingUnit1,
+            unit2Remaining: remainingUnit2
+        });
+    }
+    
+    // تحديد الفائز
+    let winner = 'tie';
+    if (remainingUnit1 > 0 && remainingUnit2 === 0) {
+        winner = 'unit1';
+    } else if (remainingUnit2 > 0 && remainingUnit1 === 0) {
+        winner = 'unit2';
+    } else if (remainingUnit1 > remainingUnit2) {
+        winner = 'unit1';
+    } else if (remainingUnit2 > remainingUnit1) {
+        winner = 'unit2';
+    }
+    
+    return {
+        winner,
+        finalUnit1Count: remainingUnit1,
+        finalUnit2Count: remainingUnit2,
+        battleData,
+        unit1WinProbability,
+        initialUnit1Count: unit1Count,
+        initialUnit2Count: unit2Count
+    };
+}
+
+// حساب قوة الهجوم
+function calculateAttackForce(unit, count, unitCategory, opponentCategory) {
+    let attackFactor = 1.5; // وحدة الهجوم لها قوة هجوم أكبر
+    
+    // تطبيق المزايا/العيوب حسب نوع الوحدة
+    if (unitCategory === 'archer' && opponentCategory === 'infantry') {
+        // الرماة لديهم ميزة ضد المشاة
+        attackFactor = 1.8;
+    } else if (unitCategory === 'infantry' && opponentCategory === 'archer') {
+        // المشاة لديها ميزة أقل ضد الرماة في الهجوم
+        attackFactor = 1.2;
+    }
+    
+    // حساب القوة الهجومية: التركيز على الهجوم والفتك
+    return (unit.attack * 1.5 + unit.defense * 0.5 + unit.health * 0.5 + unit.lethality * 1.2) * count * attackFactor;
+}
+
+// حساب قوة الدفاع
+function calculateDefenseForce(unit, count, unitCategory, opponentCategory) {
+    let defenseFactor = 1.3; // وحدة الدفاع لها قوة دفاع أكبر
+    
+    // تطبيق المزايا/العيوب حسب نوع الوحدة
+    if (unitCategory === 'infantry' && opponentCategory === 'archer') {
+        // المشاة لديها ميزة في الدفاع ضد الرماة
+        defenseFactor = 1.6;
+    } else if (unitCategory === 'archer' && opponentCategory === 'infantry') {
+        // الرماة لديهم ميزة أقل في الدفاع ضد المشاة
+        defenseFactor = 1.0;
+    }
+    
+    // حساب القوة الدفاعية: التركيز على الدفاع والصحة
+    return (unit.attack * 0.5 + unit.defense * 1.8 + unit.health * 1.5 + unit.lethality * 0.5) * count * defenseFactor;
+}
+
+// حساب الضرر الهجومي
+function calculateAttackDamage(unit, count, unitCategory, opponentCategory) {
+    let attackDamageFactor = 1.3;
+    
+    // تطبيق المزايا/العيوب حسب نوع الوحدة في الضرر
+    if (unitCategory === 'archer' && opponentCategory === 'infantry') {
+        // الرماة يسببون ضررًا أكبر للمشاة
+        attackDamageFactor = 1.6;
+    } else if (unitCategory === 'infantry' && opponentCategory === 'archer') {
+        // المشاة تسبب ضررًا أقل للرماة
+        attackDamageFactor = 1.1;
+    }
+    
+    // حساب الضرر الهجومي بناءً على الهجوم والفتك
+    return (unit.attack * 0.7 + unit.lethality * 0.5) * count * attackDamageFactor;
+}
+
+// حساب الضرر الدفاعي
+function calculateDefenseDamage(unit, count, unitCategory, opponentCategory) {
+    let defenseDamageFactor = 0.8; // وحدة الدفاع تسبب ضررًا أقل
+    
+    // تطبيق المزايا/العيوب حسب نوع الوحدة في الضرر
+    if (unitCategory === 'infantry' && opponentCategory === 'archer') {
+        // المشاة تسبب ضررًا أكبر عند الدفاع ضد الرماة
+        defenseDamageFactor = 1.0;
+    } else if (unitCategory === 'archer' && opponentCategory === 'infantry') {
+        // الرماة يسببون ضررًا أقل عند الدفاع ضد المشاة
+        defenseDamageFactor = 0.6;
+    }
+    
+    // حساب الضرر الدفاعي بناءً على الدفاع
+    return (unit.attack * 0.3 + unit.defense * 0.3 + unit.lethality * 0.2) * count * defenseDamageFactor;
+}
+
+// عرض نتائج المعركة
+function displayBattleResult(result, unit1Name, unit2Name, unit1Faction, unit2Faction) {
+    const winnerContainer = document.getElementById('battle-winner');
+    const explanationContainer = document.getElementById('battle-explanation');
+    
+    // تحديد الفائز
+    if (result.winner === 'unit1') {
+        winnerContainer.className = 'winner-container';
+        winnerContainer.classList.add(unit1Faction === 'helios' ? 'helios-winner' : 'dominators-winner');
+        winnerContainer.innerHTML = `
+            <h3>الفائز: ${unit1Name}</h3>
+            <p>الوحدات المتبقية: ${result.finalUnit1Count} من أصل ${result.initialUnit1Count}</p>
+            <p>نسبة الخسائر: ${Math.round((1 - result.finalUnit1Count / result.initialUnit1Count) * 100)}%</p>
+        `;
+    } else if (result.winner === 'unit2') {
+        winnerContainer.className = 'winner-container';
+        winnerContainer.classList.add(unit2Faction === 'helios' ? 'helios-winner' : 'dominators-winner');
+        winnerContainer.innerHTML = `
+            <h3>الفائز: ${unit2Name}</h3>
+            <p>الوحدات المتبقية: ${result.finalUnit2Count} من أصل ${result.initialUnit2Count}</p>
+            <p>نسبة الخسائر: ${Math.round((1 - result.finalUnit2Count / result.initialUnit2Count) * 100)}%</p>
+        `;
+    } else {
+        winnerContainer.className = 'winner-container winner-tie';
+        winnerContainer.innerHTML = `<h3>النتيجة: تعادل</h3>`;
+    }
+    
+    // تفسير النتيجة
+    explanationContainer.innerHTML = `
+        <p>فرصة فوز ${unit1Name} (وحدة الهجوم): ${Math.round(result.unit1WinProbability * 100)}%</p>
+        <p>فرصة فوز ${unit2Name} (وحدة الدفاع): ${Math.round((1 - result.unit1WinProbability) * 100)}%</p>
+        <p>تم أخذ مزايا وعيوب الوحدات في الاعتبار:</p>
+        <ul>
+            <li>وحدات الهجوم لديها مزايا في قوة الهجوم</li>
+            <li>وحدات الدفاع لديها مزايا في قوة الدفاع والصمود</li>
+            <li>الرماة لديهم ميزة إضافية ضد المشاة في الهجوم</li>
+            <li>المشاة لديها ميزة إضافية ضد الرماة في الدفاع</li>
+        </ul>
+    `;
+    
+    // عرض نتيجة المعركة
+    document.getElementById('battle-result').style.display = 'block';
+    
+    // تحديث الرسم البياني إذا كان موجوداً
+    try {
+        updateBattleChart(result, unit1Name, unit2Name, unit1Faction, unit2Faction);
+    } catch (error) {
+        console.error("Error updating battle chart:", error);
+    }
+}
+
+// وظيفة البحث عن المستوى المكافئ العامة
+function findEquivalentLevel(messageId, chartId, unitData, unitType, level, heliosName, dominatorsName) {
+    let sourceUnit, targetUnits, sourceName, targetName;
+    
+    if (unitType === 'helios') {
+        sourceUnit = unitData.helios.find(unit => unit.level === level);
+        targetUnits = unitData.dominators;
+        sourceName = heliosName;
+        targetName = dominatorsName;
+    } else {
+        sourceUnit = unitData.dominators.find(unit => unit.level === level);
+        targetUnits = unitData.helios;
+        sourceName = dominatorsName;
+        targetName = heliosName;
+    }
+    
+    const sourcePower = sourceUnit.totalPower;
+    
+    // العثور على أقرب وحدة مكافئة من حيث القوة
+    let closestUnit = targetUnits[0];
+    let minDifference = Math.abs(sourcePower - closestUnit.totalPower);
+    
+    targetUnits.forEach(unit => {
+        const difference = Math.abs(sourcePower - unit.totalPower);
+        if (difference < minDifference) {
+            minDifference = difference;
+            closestUnit = unit;
+        }
+    });
+    
+    const messageElement = document.getElementById(messageId);
+    const percentDifference = ((Math.abs(sourcePower - closestUnit.totalPower) / sourcePower) * 100).toFixed(1);
+    
+    if (sourcePower === closestUnit.totalPower) {
+        messageElement.innerHTML = `${sourceName} مستوى ${level} يعادل بالضبط ${targetName} مستوى ${closestUnit.level}.`;
+    } else if (sourcePower > closestUnit.totalPower) {
+        messageElement.innerHTML = `${sourceName} مستوى ${level} (قوة ${sourcePower}) أقوى من ${targetName} مستوى ${closestUnit.level} (قوة ${closestUnit.totalPower}) بنسبة ${percentDifference}%.`;
+    } else {
+        messageElement.innerHTML = `${sourceName} مستوى ${level} (قوة ${sourcePower}) أضعف من ${targetName} مستوى ${closestUnit.level} (قوة ${closestUnit.totalPower}) بنسبة ${percentDifference}%.`;
+    }
+    
+    // تحديث مخطط المستويات المكافئة
+    updateEquivalentChart(
+        chartId,
+        unitType,
+        level,
+        closestUnit.level,
+        unitData,
+        heliosName,
+        dominatorsName
+    );
+}
+
+// إنشاء مخططات قوة الوحدات
+function createPowerChart() {
+    // مخطط قوة المشاة
+    createUnitPowerChart(
+        'infantry-power-chart',
+        infantryData.helios,
+        infantryData.dominators,
+        'مشاة هيليوس',
+        'المشاة المهيمنين'
+    );
+    
+    // مخطط قوة الرماة
+    createUnitPowerChart(
+        'archer-power-chart',
+        archerData.helios,
+        archerData.dominators,
+        'رماة هيليوس',
+        'الرماة المهيمنين'
+    );
+}
+
+// إنشاء مخطط المقارنة المختلطة
+let mixedChart;
+function createMixedChart() {
+    try {
+        const ctx = document.getElementById('mixed-comparison-chart')?.getContext('2d');
+        if (!ctx) {
+            console.error("Mixed chart canvas not found");
+            return;
+        }
+        
+        mixedChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['الهجوم', 'الدفاع', 'الصحة', 'الفتك', 'إجمالي القوة'],
+                datasets: [
+                    {
+                        label: 'الوحدة الأولى',
+                        data: [0, 0, 0, 0, 0],
+                        backgroundColor: 'rgba(203, 53, 53, 0.2)',
+                        borderColor: 'rgba(203, 53, 53, 0.8)',
+                        pointBackgroundColor: 'rgba(203, 53, 53, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(203, 53, 53, 1)'
+                    },
+                    {
+                        label: 'الوحدة الثانية',
+                        data: [0, 0, 0, 0, 0],
+                        backgroundColor: 'rgba(140, 54, 137, 0.2)',
+                        borderColor: 'rgba(140, 54, 137, 0.8)',
+                        pointBackgroundColor: 'rgba(140, 54, 137, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(140, 54, 137, 1)'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        ticks: {
+                            display: false
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'مقارنة الوحدات المختلطة'
+                    },
+                    legend: {
+                        position: 'top'
+                    }
+                }
+            }
+        });
+    } catch (error) {
+        console.error("Error creating mixed chart:", error);
+    }
+}
+
+// تحديث مخطط المقارنة المختلطة
+function updateMixedChart(unit1, unit2, unit1Name, unit2Name) {
+    try {
+        if (!mixedChart) {
+            console.error("Mixed chart not initialized");
+            return;
+        }
+        
+        // تحديث البيانات
+        mixedChart.data.datasets[0].label = unit1Name;
+        mixedChart.data.datasets[1].label = unit2Name;
+        
+        // تحديث قيم الإحصاءات للوحدتين
+        mixedChart.data.datasets[0].data = [
+            unit1.attack,
+            unit1.defense,
+            unit1.health,
+            unit1.lethality,
+            unit1.totalPower
+        ];
+        
+        mixedChart.data.datasets[1].data = [
+            unit2.attack,
+            unit2.defense,
+            unit2.health,
+            unit2.lethality,
+            unit2.totalPower
+        ];
+        
+        mixedChart.update();
+    } catch (error) {
+        console.error("Error updating mixed chart:", error);
+    }
+}
+
+// إنشاء مخطط المعركة
+let battleChart;
+function createBattleChart() {
+    try {
+        const ctx = document.getElementById('battle-chart')?.getContext('2d');
+        if (!ctx) {
+            console.error("Battle chart canvas not found");
+            return;
+        }
+        
+        battleChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [
+                    {
+                        label: 'الوحدة الأولى',
+                        data: [],
+                        borderColor: 'rgba(203, 53, 53, 1)',
+                        backgroundColor: 'rgba(203, 53, 53, 0.2)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.1
+                    },
+                    {
+                        label: 'الوحدة الثانية',
+                        data: [],
+                        borderColor: 'rgba(140, 54, 137, 1)',
+                        backgroundColor: 'rgba(140, 54, 137, 0.2)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'عدد الوحدات المتبقية'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'الجولة'
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'محاكاة المعركة'
+                    },
+                    legend: {
+                        position: 'top'
+                    }
+                }
+            }
+        });
+    } catch (error) {
+        console.error("Error creating battle chart:", error);
+    }
+}
+
+// تحديث مخطط المعركة
+function updateBattleChart(result, unit1Name, unit2Name, unit1Faction, unit2Faction) {
+    try {
+        if (!battleChart) {
+            console.error("Battle chart not initialized");
+            return;
+        }
+        
+        // تحديث أسماء الوحدات
+        battleChart.data.datasets[0].label = unit1Name;
+        battleChart.data.datasets[1].label = unit2Name;
+        
+        // تحديث ألوان الوحدات حسب المعسكر
+        if (unit1Faction === 'helios') {
+            battleChart.data.datasets[0].borderColor = 'rgba(203, 53, 53, 1)';
+            battleChart.data.datasets[0].backgroundColor = 'rgba(203, 53, 53, 0.2)';
+        } else {
+            battleChart.data.datasets[0].borderColor = 'rgba(140, 54, 137, 1)';
+            battleChart.data.datasets[0].backgroundColor = 'rgba(140, 54, 137, 0.2)';
+        }
+        
+        if (unit2Faction === 'helios') {
+            battleChart.data.datasets[1].borderColor = 'rgba(203, 53, 53, 1)';
+            battleChart.data.datasets[1].backgroundColor = 'rgba(203, 53, 53, 0.2)';
+        } else {
+            battleChart.data.datasets[1].borderColor = 'rgba(140, 54, 137, 1)';
+            battleChart.data.datasets[1].backgroundColor = 'rgba(140, 54, 137, 0.2)';
+        }
+        
+        // تحديث بيانات الجولات
+        const labels = result.battleData.map(data => data.round);
+        const unit1Data = result.battleData.map(data => data.unit1Remaining);
+        const unit2Data = result.battleData.map(data => data.unit2Remaining);
+        
+        // إضافة نقطة البداية (الجولة 0)
+        labels.unshift(0);
+        unit1Data.unshift(result.initialUnit1Count);
+        unit2Data.unshift(result.initialUnit2Count);
+        
+        battleChart.data.labels = labels;
+        battleChart.data.datasets[0].data = unit1Data;
+        battleChart.data.datasets[1].data = unit2Data;
+        
+        battleChart.update();
+    } catch (error) {
+        console.error("Error updating battle chart:", error);
+    }
+}
+
+// وظيفة إنشاء مخطط قوة الوحدات
+function createUnitPowerChart(chartId, heliosData, dominatorsData, heliosName, dominatorsName) {
+    const ctx = document.getElementById(chartId).getContext('2d');
+    
+    const labels = heliosData.map(unit => `المستوى ${unit.level}`);
+    const heliosPower = heliosData.map(unit => unit.totalPower);
+    const dominatorsPower = dominatorsData.map(unit => unit.totalPower);
+    
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: heliosName,
+                    data: heliosPower,
+                    backgroundColor: 'rgba(203, 53, 53, 0.7)',
+                    borderColor: 'rgba(203, 53, 53, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: dominatorsName,
+                    data: dominatorsPower,
+                    backgroundColor: 'rgba(140, 54, 137, 0.7)',
+                    borderColor: 'rgba(140, 54, 137, 1)',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        font: {
+                            size: 14
+                        }
+                    }
+                },
+                title: {
+                    display: true,
+                    text: `مقارنة إجمالي القوة بين ${heliosName} و ${dominatorsName}`,
+                    font: {
+                        size: 16
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'إجمالي القوة'
+                    }
+                }
+            }
+        }
+    });
+}
+
+// إنشاء مخطط المعركة
+function createBattleChart(chartId, heliosName, dominatorsName, heliosCount, dominatorsCount, heliosPower, dominatorsPower) {
+    const ctx = document.getElementById(chartId).getContext('2d');
+    
+    // تحقق مما إذا كان هناك مخطط قديم وتدميره
+    if (window[chartId + 'Chart']) {
+        window[chartId + 'Chart'].destroy();
+    }
+    
+    window[chartId + 'Chart'] = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [heliosName, dominatorsName],
+            datasets: [{
+                label: 'إجمالي قوة الوحدات',
+                data: [heliosPower, dominatorsPower],
+                backgroundColor: [
+                    'rgba(203, 53, 53, 0.7)',
+                    'rgba(140, 54, 137, 0.7)'
+                ],
+                borderColor: [
+                    'rgba(203, 53, 53, 1)',
+                    'rgba(140, 54, 137, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: `مقارنة قوة المعركة: ${heliosCount} ${heliosName} ضد ${dominatorsCount} ${dominatorsName}`,
+                    font: {
+                        size: 16
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.y !== null) {
+                                label += context.parsed.y;
+                            }
+                            if (context.dataIndex === 0) {
+                                label += ` (${heliosCount} وحدة × ${heliosPower / heliosCount})`;
+                            } else {
+                                label += ` (${dominatorsCount} وحدة × ${dominatorsPower / dominatorsCount})`;
+                            }
+                            return label;
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'إجمالي القوة'
+                    }
+                }
+            }
+        }
+    });
+    
+    return window[chartId + 'Chart'];
+}
+
+// إنشاء مخططات المستويات المكافئة
+function createEquivalentCharts() {
+    // تهيئة المخططات
+    createEquivalentChart('infantry-equivalent-chart');
+    createEquivalentChart('archer-equivalent-chart');
+}
+
+// إنشاء مخطط المستويات المكافئة
+function createEquivalentChart(chartId) {
+    const ctx = document.getElementById(chartId).getContext('2d');
+    
+    window[chartId + 'Chart'] = new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: ['الهجوم', 'الدفاع', 'الصحة', 'الفتك', 'إجمالي القوة'],
+            datasets: [
+                {
+                    label: 'وحدة 1',
+                    data: [0, 0, 0, 0, 0],
+                    backgroundColor: 'rgba(203, 53, 53, 0.3)',
+                    borderColor: 'rgba(203, 53, 53, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(203, 53, 53, 1)'
+                },
+                {
+                    label: 'وحدة 2',
+                    data: [0, 0, 0, 0, 0],
+                    backgroundColor: 'rgba(140, 54, 137, 0.3)',
+                    borderColor: 'rgba(140, 54, 137, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(140, 54, 137, 1)'
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top'
+                },
+                title: {
+                    display: true,
+                    text: 'مقارنة المستويات المكافئة',
+                    font: {
+                        size: 16
+                    }
+                }
+            },
+            scales: {
+                r: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    
+    return window[chartId + 'Chart'];
+}
+
+// تحديث مخطط المستويات المكافئة
+function updateEquivalentChart(chartId, unitType, sourceLevel, targetLevel, unitData, heliosName, dominatorsName) {
+    const chart = window[chartId + 'Chart'];
+    
+    let sourceUnit, targetUnit, sourceName, targetName;
+    
+    if (unitType === 'helios') {
+        sourceUnit = unitData.helios.find(unit => unit.level === sourceLevel);
+        targetUnit = unitData.dominators.find(unit => unit.level === targetLevel);
+        sourceName = heliosName;
+        targetName = dominatorsName;
+    } else {
+        sourceUnit = unitData.dominators.find(unit => unit.level === sourceLevel);
+        targetUnit = unitData.helios.find(unit => unit.level === targetLevel);
+        sourceName = dominatorsName;
+        targetName = heliosName;
+    }
+    
+    // تحديث البيانات
+    chart.data.datasets[0].label = `${sourceName} مستوى ${sourceLevel}`;
+    chart.data.datasets[0].data = [
+        sourceUnit.attack,
+        sourceUnit.defense,
+        sourceUnit.health,
+        sourceUnit.lethality,
+        sourceUnit.totalPower / 3  // تقسيم لتناسب المخطط
+    ];
+    
+    chart.data.datasets[1].label = `${targetName} مستوى ${targetLevel}`;
+    chart.data.datasets[1].data = [
+        targetUnit.attack,
+        targetUnit.defense,
+        targetUnit.health,
+        targetUnit.lethality,
+        targetUnit.totalPower / 3  // تقسيم لتناسب المخطط
+    ];
+    
+    chart.update();
+}
+    </script>
+</body>
+</html>
